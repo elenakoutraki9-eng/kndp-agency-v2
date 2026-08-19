@@ -2,7 +2,8 @@ import { Children, cloneElement, useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const NAV_OFFSET = 96;
-const STACK_GAP = 14;
+const STACK_GAP = 12;
+const MAX_DEPTH = 3;
 
 export const StackedPanels = ({ children, className = "" }) => {
   const ref = useRef(null);
@@ -35,7 +36,7 @@ export const StackPanel = ({
     const measure = () => {
       const h = contentRef.current?.offsetHeight || 0;
       const base = Math.min(NAV_OFFSET, window.innerHeight - h);
-      setTop(base + index * STACK_GAP);
+      setTop(base + Math.min(index, 4) * STACK_GAP);
     };
     measure();
     window.addEventListener("resize", measure);
@@ -47,9 +48,10 @@ export const StackPanel = ({
     };
   }, [index]);
 
-  const targetScale = 1 - (total - 1 - index) * 0.05;
+  const depth = Math.min(total - 1 - index, MAX_DEPTH);
+  const targetScale = 1 - depth * 0.04;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
-  const dim = useTransform(progress, [index / total, 1], [1, 1 - (total - 1 - index) * 0.18]);
+  const dim = useTransform(progress, [index / total, 1], [1, 1 - depth * 0.12]);
   const filter = useTransform(dim, (b) => `brightness(${b})`);
 
   return (

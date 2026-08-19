@@ -8,9 +8,14 @@ import Cursor from "@/components/Cursor";
 import EditorialMarquee from "@/components/Marquee";
 import { StackedPanels } from "@/components/StackSection";
 import Hero from "@/sections/Hero";
+import WhatWeBuildSection from "@/sections/WhatWeBuildSection";
+import ProblemSolutionSection from "@/sections/ProblemSolutionSection";
 import ServicesSection from "@/sections/ServicesSection";
+import HowItWorksSection from "@/sections/HowItWorksSection";
 import PortfolioSection from "@/sections/PortfolioSection";
 import AboutSection from "@/sections/AboutSection";
+import WhoForSection from "@/sections/WhoForSection";
+import TestimonialsSection from "@/sections/TestimonialsSection";
 import FaqSection from "@/sections/FaqSection";
 import ContactSection from "@/sections/ContactSection";
 import { setLenis } from "@/lib/scroll";
@@ -40,9 +45,14 @@ function App() {
         <Hero />
         <EditorialMarquee />
         <StackedPanels className="pb-[12vh]">
+          <WhatWeBuildSection />
+          <ProblemSolutionSection />
           <ServicesSection />
+          <HowItWorksSection />
           <PortfolioSection />
           <AboutSection />
+          <WhoForSection />
+          <TestimonialsSection />
           <FaqSection />
           <ContactSection />
         </StackedPanels>

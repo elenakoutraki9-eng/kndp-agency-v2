@@ -15,6 +15,7 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 - 2026-08-19: Converted from 5 routed pages to a single-page continuous scroll with section smooth-scroll nav and scroll-spy active states.
 - 2026-08-19: Fixed stacked-panel clipping — panels measure their height and only pin after all content has scrolled through.
 - 2026-08-19: Trust & conversion pass — hero stats (projects/2h reply promise/4w delivery), promise chips ("Free estimate · Reply within 2 hours · You own everything"), all primary CTAs changed to "Get a Free Estimate", new FAQ accordion panel (5 Q&As) between About and Contact, 2-hour response line near CTAs.
+- 2026-08-19: Added 5 new stacked panels: What We Can Build (6 icon cards), Problem → Solution (4 pairs), How It Works (dark 3-step panel, 48h free plan promise), Who Is KNDP For (7 business types + inclusive highlight card), Testimonials (3 placeholder cards, stories coming soon). Stack scale/dim capped at depth 3 for 10 panels. Fixed WordMask words randomly staying hidden — whileInView now observes the untransformed mask with variant propagation.
 - No "AI" mentioned anywhere on the site.
 
 ## User Personas

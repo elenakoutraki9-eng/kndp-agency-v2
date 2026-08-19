@@ -29,23 +29,30 @@ export const WordMask = ({ text, accent = [], delay = 0, stagger = 0.07, classNa
   return (
     <span className={className}>
       {words.map((w, i) => (
-        <span
+        <motion.span
           key={`${w}-${i}`}
           className="inline-block overflow-hidden align-bottom pb-[0.12em] -mb-[0.12em]"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
         >
           <motion.span
             className={`inline-block will-change-transform ${
               accent.includes(w) ? "text-baby-dark italic" : ""
             }`}
-            initial={{ y: "115%", rotate: 3 }}
-            whileInView={{ y: 0, rotate: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.75, delay: delay + i * stagger, ease: EASE }}
+            variants={{
+              hidden: { y: "115%", rotate: 3 },
+              show: {
+                y: 0,
+                rotate: 0,
+                transition: { duration: 0.75, delay: delay + i * stagger, ease: EASE },
+              },
+            }}
           >
             {w}
             {i < words.length - 1 ? "\u00A0" : ""}
           </motion.span>
-        </span>
+        </motion.span>
       ))}
     </span>
   );
@@ -127,9 +134,11 @@ export const Magnetic = ({ children, strength = 0.3, className = "" }) => {
   );
 };
 
-export const Kicker = ({ children, className = "" }) => (
+export const Kicker = ({ children, className = "", light = false }) => (
   <span
-    className={`inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.25em] font-semibold text-ink/60 ${className}`}
+    className={`inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.25em] font-semibold ${
+      light ? "text-white/60" : "text-ink/60"
+    } ${className}`}
   >
     <motion.span
       className="h-2 w-2 rounded-full bg-baby"
