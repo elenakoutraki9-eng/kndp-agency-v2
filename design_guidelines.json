@@ -1,0 +1,99 @@
+{
+  "theme": "light",
+  "colors": {
+    "primary": "#FFFFFF",
+    "accent": "#89CFF0",
+    "text_main": "#0A0A0A",
+    "text_secondary": "#4A4A4A",
+    "background": "#FDFDFD",
+    "surface": "#F5F7FA",
+    "border": "#E5E7EB",
+    "rules": "White base, Baby Blue (#89CFF0) for accents/buttons, deep charcoal (#0A0A0A) for text. High contrast is mandatory. Baby blue should be used for interactions, kinetic elements, and marquee backgrounds. Do not use generic full-screen gradients."
+  },
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Manrope",
+    "rules": "Use Outfit for headings with tight tracking (tracking-tighter) and weights ranging from light (300) to bold (700) depending on hierarchy. Use Manrope for body text with relaxed line height (leading-relaxed). Avoid Inter for headings. Use fluid typography scaling, max text-6xl for hero.",
+    "hierarchy": {
+      "h1": "text-5xl md:text-6xl font-bold tracking-tighter",
+      "h2": "text-4xl md:text-5xl font-medium tracking-tight",
+      "h3": "text-2xl md:text-3xl font-medium",
+      "body": "text-base md:text-lg leading-relaxed text-text_secondary",
+      "labels": "text-xs md:text-sm uppercase tracking-[0.2em] font-semibold"
+    }
+  },
+  "visual_enhancers": {
+    "surfaces": "Use 'Glassmorphism' (Crystal variant: bg-white/70, backdrop-blur-xl, 1px border-white/20) for the sticky nav. Use solid, crisp edges for cards with subtle hover lift and shadow.",
+    "spacing": "Generous spacing. Use p-12, p-16, p-24 for sections. Use gap-8 or gap-12 for bento grids.",
+    "borders": "Use Grid Borders style for the services list or footer to expose the skeleton.",
+    "motion": "Premium motion is key. Use framer-motion for line-by-line masked reveal on the hero headline. Subtle parallax on hero image. Staggered entrance for bento grids and service lists. Use lenis for smooth scrolling.",
+    "marquee": "Editorial marquee ribbon, very slow smooth drift, pale baby blue background with dark text, wide gaps (gap-24)."
+  },
+  "layouts": {
+    "hero": "Kinetic hero. Split or overlapping layout with large masked typography. Subtle parallax image moment.",
+    "services": "Numbered manifesto chapters or a technical grid (Grid Borders) to list out the 8 services (websites, web tools, apps, web apps, programs, custom tools, automations, custom digital solutions).",
+    "portfolio": "Clean, large typography placeholder 'Our work is coming soon' with a subtle grain or minimalist aesthetic.",
+    "about": "Founder story layout. Asymmetric bento grid mixing text blocks and a portrait image.",
+    "contact": "Form on one side, large 'Let's Talk' typography and contact/calendar links on the other.",
+    "general": "Mobile-first, asymmetric bento grids (Tetris Grid: grid-cols-1 md:grid-cols-12 with varied spans) to break standard patterns."
+  },
+  "components": {
+    "navigation": "Sticky glass header (z-50) with Logo, Links (Home, Services, Portfolio, About, Contact), and a Baby Blue pill-shaped CTA.",
+    "footer": "Massive footer (py-24 or py-32) with dark background (#0A0A0A) and light text, contrasting the main light theme. Include a giant 'KNDP' text (text-[10vw]).",
+    "buttons": "Pill-shaped (rounded-full), solid baby blue bg with dark or white text (check contrast). Hover states must have a subtle scale and color shift.",
+    "forms": "Use Shadcn customized inputs. Clean 1px bottom border (flushed inputs) or subtly rounded inputs. Never use native raw inputs."
+  },
+  "media": {
+    "images": [
+      {
+        "url": "https://images.pexels.com/photos/31068011/pexels-photo-31068011.jpeg",
+        "description": "Abstract white building under blue sky",
+        "category": "Hero / Abstract Visual"
+      },
+      {
+        "url": "https://images.pexels.com/photos/8004070/pexels-photo-8004070.jpeg",
+        "description": "Minimalist modern workspace",
+        "category": "About / Workspace"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1625461291092-13d0c45608b3",
+        "description": "MacBook workspace",
+        "category": "Services"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+        "description": "Male professional headshot",
+        "category": "Founder / About"
+      }
+    ],
+    "rules": "No placeholders. Max height 80vh on mobile. Use subtle masking or clipping on images."
+  },
+  "libraries": {
+    "motion": "framer-motion",
+    "scrolling": "@studio-freight/react-lenis",
+    "marquee": "react-fast-marquee",
+    "icons": "lucide-react",
+    "routing": "react-router-dom"
+  },
+  "instructions_to_main_agent": [
+    "Install specific fonts (Outfit, Manrope) via Google Fonts in index.html.",
+    "Install framer-motion, @studio-freight/react-lenis, react-fast-marquee, react-router-dom, clsx, tailwind-merge.",
+    "Build standard multi-page structure using React Router.",
+    "Apply smooth scrolling (Lenis) at the root level.",
+    "Implement masked line-by-line reveal for 'We Build Whatever You Need' in Hero.",
+    "Include 'data-testid' on all interactive elements.",
+    "Strictly DO NOT mention 'AI' anywhere. This is a massive rule.",
+    "Override default generic Shadcn styles to match the agency premium aesthetic."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not converge toward generic outputs (AI slop).",
+    "Create depth through layered design elements and z-index hierarchy.",
+    "Never use generic centered layouts or simplistic gradients.",
+    "Do not apply `transition: all` globally.",
+    "Do not center align the app container text.",
+    "Use pill-shaped buttons with clear interaction animations.",
+    "Add micro-animations to all interactive elements.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Never use placeholder URLs (via.placeholder.com). Use provided image URLs."
+  ]
+}
