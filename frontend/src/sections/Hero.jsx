@@ -3,10 +3,9 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { ArrowUpRight, ArrowDown, Check } from "lucide-react";
 import { Kicker, WordMask, Counter, Magnetic } from "@/components/Reveal";
 import HeroBackground, { useMouseParallax } from "@/components/HeroBackground";
+import ChatPhone from "@/components/ChatPhone";
 import { StackPanel } from "@/components/StackSection";
 import { scrollToId } from "@/lib/scroll";
-
-const HERO_IMG = "https://images.pexels.com/photos/31068011/pexels-photo-31068011.jpeg?auto=compress&cs=tinysrgb&w=1000";
 
 const rotatingWords = ["Websites", "Web Apps", "Custom Tools", "Automations"];
 
@@ -25,7 +24,7 @@ export default function Hero(props) {
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const phoneY = useTransform(scrollYProgress, [0, 1], [0, 70]);
   const imgMX = useTransform(mx, [-1, 1], [-10, 10]);
   const imgMY = useTransform(my, [-1, 1], [-8, 8]);
 
@@ -143,15 +142,11 @@ export default function Hero(props) {
               initial={{ opacity: 0, scale: 0.96, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="relative rounded-3xl overflow-hidden aspect-[4/5] max-h-[70vh] w-full shadow-2xl shadow-baby/20"
+              className="relative w-full flex justify-center"
             >
-              <motion.img
-                src={HERO_IMG}
-                alt="Abstract white architecture under a blue sky"
-                style={{ y: imgY }}
-                className="absolute inset-0 h-[120%] w-full object-cover scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/20 to-transparent" />
+              <motion.div style={{ y: phoneY }} className="will-change-transform">
+                <ChatPhone />
+              </motion.div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: -16 }}
