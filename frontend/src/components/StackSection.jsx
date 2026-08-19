@@ -51,17 +51,21 @@ export const StackPanel = ({
   const depth = Math.min(total - 1 - index, MAX_DEPTH);
   const targetScale = 1 - depth * 0.04;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
-  const dim = useTransform(progress, [index / total, 1], [1, 1 - depth * 0.12]);
-  const filter = useTransform(dim, (b) => `brightness(${b})`);
+  const dimOpacity = useTransform(progress, [index / total, 1], [0, depth * 0.15]);
 
   return (
     <div className={`sticky ${className}`} style={{ top, zIndex: index + 1 }}>
       <motion.div
         ref={contentRef}
-        style={{ scale, filter }}
-        className={`origin-top will-change-transform ${innerClassName}`}
+        style={{ scale }}
+        className={`origin-top will-change-transform relative ${innerClassName}`}
       >
         {children}
+        <motion.div
+          aria-hidden
+          style={{ opacity: dimOpacity }}
+          className="absolute inset-0 z-40 bg-black rounded-[inherit] pointer-events-none"
+        />
       </motion.div>
     </div>
   );

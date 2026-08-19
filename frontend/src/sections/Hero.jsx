@@ -5,7 +5,7 @@ import { Kicker, WordMask, Counter, Magnetic } from "@/components/Reveal";
 import HeroBackground, { useMouseParallax } from "@/components/HeroBackground";
 import { scrollToId } from "@/lib/scroll";
 
-const HERO_IMG = "https://images.pexels.com/photos/31068011/pexels-photo-31068011.jpeg";
+const HERO_IMG = "https://images.pexels.com/photos/31068011/pexels-photo-31068011.jpeg?auto=compress&cs=tinysrgb&w=1000";
 
 const rotatingWords = ["Websites", "Web Apps", "Custom Tools", "Automations"];
 

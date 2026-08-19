@@ -3,8 +3,8 @@ import { WordMask, Reveal, Kicker, ParallaxY, Magnetic } from "@/components/Reve
 import { StackPanel } from "@/components/StackSection";
 import { scrollToId } from "@/lib/scroll";
 
-const FOUNDER_IMG = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e";
-const WORKSPACE_IMG = "https://images.pexels.com/photos/8004070/pexels-photo-8004070.jpeg";
+const FOUNDER_IMG = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop";
+const WORKSPACE_IMG = "https://images.pexels.com/photos/8004070/pexels-photo-8004070.jpeg?auto=compress&cs=tinysrgb&w=1000";
 
 const chapters = [
   {

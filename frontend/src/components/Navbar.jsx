@@ -39,7 +39,7 @@ export default function Navbar() {
   return (
     <header
       data-testid="site-navbar"
-      className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/40"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md border-b border-white/40"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-10 h-20 flex items-center justify-between">
         <button
@@ -96,11 +96,11 @@ export default function Navbar() {
         {open && (
           <motion.nav
             data-testid="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden bg-white/90 backdrop-blur-xl border-t border-ink/5"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden absolute left-0 right-0 top-full bg-white/95 backdrop-blur-md border-b border-ink/5 shadow-xl"
           >
             <div className="px-6 py-6 flex flex-col gap-1">
               {links.map((l, i) => (
