@@ -5,24 +5,24 @@ import { WordMask, Reveal, Kicker } from "@/components/Reveal";
 
 const faqs = [
   {
-    q: "Can you build exactly what I need?",
-    a: "Yes — everything we build is custom, shaped around how your business actually works. No templates forced onto your problem. And if something isn't worth building, we'll tell you that honestly too.",
+    q: "Μπορείτε να χτίσετε ακριβώς ό,τι χρειάζομαι;",
+    a: "Ναι — όλα όσα χτίζουμε είναι custom, φτιαγμένα γύρω από τον πραγματικό τρόπο λειτουργίας της επιχείρησής σου. Χωρίς έτοιμα templates που δεν ταιριάζουν στο πρόβλημά σου. Και αν κάτι δεν αξίζει να χτιστεί, θα σου το πούμε ειλικρινά κι αυτό.",
   },
   {
-    q: "How long does a project take?",
-    a: "Most websites ship in 2–4 weeks. Larger apps, tools and platforms typically take 4–8. You'll get a clear timeline with your free estimate — and we stick to it.",
+    q: "Πόσο διαρκεί ένα έργο;",
+    a: "Οι περισσότεροι ιστότοποι παραδίδονται σε 2–4 εβδομάδες. Μεγαλύτερες εφαρμογές, εργαλεία και πλατφόρμες συνήθως χρειάζονται 4–8. Θα λάβεις ένα ξεκάθαρο χρονοδιάγραμμα με τη δωρεάν προσφορά σου — και το τηρούμε.",
   },
   {
-    q: "Who owns the final product?",
-    a: "You do — 100%. The code, the design, the accounts, all of it is in your name and handed over completely. No lock-in, no strings attached.",
+    q: "Σε ποιον ανήκει το τελικό προϊόν;",
+    a: "Σε εσένα — 100%. Ο κώδικας, το design, οι λογαριασμοί, όλα είναι στο όνομά σου και παραδίδονται πλήρως. Χωρίς δεσμεύσεις, χωρίς κρυφούς όρους.",
   },
   {
-    q: "What types of businesses do you work with?",
-    a: "Any size, any industry — from solo founders launching their first idea to established companies modernizing how they work. If you have a real problem to solve, we're interested.",
+    q: "Με τι είδους επιχειρήσεις συνεργάζεστε;",
+    a: "Κάθε μέγεθος, κάθε κλάδο — από μεμονωμένους ιδρυτές που ξεκινούν την πρώτη τους ιδέα, έως καθιερωμένες εταιρείες που εκσυγχρονίζουν τον τρόπο λειτουργίας τους. Αν έχεις ένα πραγματικό πρόβλημα να λύσεις, μας ενδιαφέρει.",
   },
   {
-    q: "How much will it cost?",
-    a: "Every project is scoped individually, so you only pay for what you actually need. Ask for a free estimate and you'll get an honest, fixed quote — no surprises later.",
+    q: "Πόσο θα κοστίσει;",
+    a: "Κάθε έργο σχεδιάζεται ξεχωριστά, ώστε να πληρώνεις μόνο για ό,τι χρειάζεσαι πραγματικά. Ζήτησε μια δωρεάν προσφορά και θα λάβεις μια ειλικρινή, σταθερή τιμή — χωρίς εκπλήξεις αργότερα.",
   },
 ];
 
@@ -88,17 +88,17 @@ export default function FaqSection() {
       <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4">
             <Reveal>
-              <Kicker>FAQ</Kicker>
+              <Kicker>Συχνές Ερωτήσεις</Kicker>
               <h2
                 data-testid="faq-headline"
                 className="mt-3 font-display font-medium tracking-tight text-3xl md:text-4xl"
               >
-                <WordMask text="Questions," className="block" />
-                <WordMask text="answered." accent={["answered."]} delay={0.2} className="block" />
+                <WordMask text="Ερωτήσεις," className="block" />
+                <WordMask text="απαντημένες." accent={["απαντημένες."]} delay={0.2} className="block" />
               </h2>
               <p className="mt-3 text-sm text-ink/60 leading-relaxed max-w-sm">
-                The things people usually ask before starting a project with us.
-                Anything else — just ask, we reply within 2 hours.
+                Αυτά που ρωτούν συνήθως πριν ξεκινήσουν ένα έργο μαζί μας. Για
+                οτιδήποτε άλλο — ρώτησέ μας, απαντάμε εντός 2 ωρών.
               </p>
             </Reveal>
           </div>

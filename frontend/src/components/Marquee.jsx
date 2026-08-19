@@ -2,14 +2,14 @@ import Marquee from "react-fast-marquee";
 import { Asterisk } from "lucide-react";
 
 const items = [
-  "Websites",
-  "Web Apps",
-  "Mobile Apps",
-  "Custom Tools",
-  "Automations",
-  "Web Tools",
-  "Programs",
-  "Digital Solutions",
+  "Ιστότοποι",
+  "Εφαρμογές Web",
+  "Εφαρμογές Κινητού",
+  "Έξυπνα Εργαλεία",
+  "Αυτοματισμοί",
+  "Εργαλεία Web",
+  "Προγράμματα",
+  "Ψηφιακές Λύσεις",
 ];
 
 export default function EditorialMarquee() {

@@ -3,9 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Search, Bell, TrendingUp } from "lucide-react";
 
 const SCREENS = [
-  { id: "website", label: "Website" },
-  { id: "app", label: "Mobile App" },
-  { id: "dashboard", label: "Web Tool" },
+  { id: "website", label: "Ιστότοπος" },
+  { id: "app", label: "Εφαρμογή" },
+  { id: "dashboard", label: "Εργαλείο Web" },
 ];
 
 const HOLD_MS = 2600;
@@ -26,7 +26,7 @@ const WebsiteScreen = () => (
       <div className="mt-3 h-1.5 w-4/5 rounded-full bg-ink/10" />
       <div className="mt-1.5 h-1.5 w-3/5 rounded-full bg-ink/10" />
       <span className="mt-4 inline-flex rounded-full bg-baby px-4 py-1.5 text-[9px] font-extrabold text-ink">
-        Get Started
+        Ξεκίνα Τώρα
       </span>
     </div>
     <div className="mt-auto mb-5 mx-4 rounded-xl bg-mist h-16" />

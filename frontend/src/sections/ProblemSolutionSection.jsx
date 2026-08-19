@@ -5,20 +5,20 @@ import { StackPanel } from "@/components/StackSection";
 
 const pairs = [
   {
-    problem: "Customers can't book online",
-    solution: "Custom booking app, live in 5 days",
+    problem: "Οι πελάτες δεν μπορούν να κάνουν κράτηση online",
+    solution: "Custom εφαρμογή κρατήσεων, έτοιμη σε 5 μέρες",
   },
   {
-    problem: "You're drowning in manual work",
-    solution: "A custom automation that handles it for you",
+    problem: "Πνίγεσαι σε χειρωνακτική δουλειά",
+    solution: "Ένας custom αυτοματισμός που τα κάνει όλα για εσένα",
   },
   {
-    problem: "Your website looks outdated",
-    solution: "A modern site that converts visitors into clients",
+    problem: "Ο ιστότοπός σου φαίνεται ξεπερασμένος",
+    solution: "Ένας μοντέρνος ιστότοπος που μετατρέπει επισκέπτες σε πελάτες",
   },
   {
-    problem: "You need a tool your team actually uses",
-    solution: "We build it around your exact workflow",
+    problem: "Χρειάζεσαι ένα εργαλείο που η ομάδα σου θα χρησιμοποιεί πραγματικά",
+    solution: "Το χτίζουμε γύρω από τον δικό σου τρόπο δουλειάς",
   },
 ];
 
@@ -31,13 +31,13 @@ export default function ProblemSolutionSection(props) {
       <section id="problems" data-testid="problem-solution-section" className="py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <Reveal>
-            <Kicker>Problems we solve</Kicker>
+            <Kicker>Προβλήματα που λύνουμε</Kicker>
             <h2
               data-testid="problem-solution-headline"
               className="mt-3 font-display font-medium tracking-tight text-3xl md:text-5xl"
             >
-              <WordMask text="Sound" className="inline-block" />{" "}
-              <WordMask text="familiar?" accent={["familiar?"]} delay={0.2} className="inline-block" />
+              <WordMask text="Σου ακούγεται" className="inline-block" />{" "}
+              <WordMask text="γνωστό;" accent={["γνωστό;"]} delay={0.2} className="inline-block" />
             </h2>
           </Reveal>
           <div className="mt-6 space-y-3">

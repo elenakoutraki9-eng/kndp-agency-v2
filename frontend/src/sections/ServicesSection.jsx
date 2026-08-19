@@ -15,79 +15,79 @@ import ServicesPhoneMockup from "@/components/ServicesPhoneMockup";
 const categories = [
   {
     slug: "customers",
-    name: "For Your Customers",
+    name: "Για τους Πελάτες σου",
     services: [
       {
         n: "01",
-        title: "Websites",
-        text: "Turn visitors into paying customers with a fast, sharp site that makes it obvious why they should pick you over anyone else.",
-        who: "For businesses wanting more leads",
+        title: "Ιστοσελίδες",
+        text: "Μετατρέψτε τους επισκέπτες σε πληρωμένους πελάτες με έναν γρήγορο, καλοσχεδιασμένο ιστότοπο που δείχνει ξεκάθαρα γιατί να σε επιλέξουν έναντι οποιουδήποτε άλλου.",
+        who: "Για επιχειρήσεις που θέλουν περισσότερους πελάτες",
       },
       {
         n: "03",
-        title: "Apps",
-        text: "Give customers a reason to come back — booking, ordering or managing their account in a few taps, right from their phone.",
-        who: "For businesses building customer loyalty",
+        title: "Εφαρμογές",
+        text: "Δώστε στους πελάτες έναν λόγο να επιστρέφουν — κρατήσεις, παραγγελίες ή διαχείριση λογαριασμού με λίγα μόνο πατήματα, απευθείας από το κινητό τους.",
+        who: "Για επιχειρήσεις που χτίζουν πίστη πελατών",
       },
       {
         n: "04",
-        title: "Web Apps",
-        text: "Let customers book, pay and manage everything themselves, so your team spends less time on the phone and more time on real work.",
-        who: "For businesses drowning in back-and-forth",
+        title: "Εφαρμογές Web",
+        text: "Αφήστε τους πελάτες να κάνουν κράτηση, να πληρώνουν και να διαχειρίζονται τα πάντα μόνοι τους, ώστε η ομάδα σου να περνά λιγότερο χρόνο στο τηλέφωνο και περισσότερο σε ουσιαστική δουλειά.",
+        who: "Για επιχειρήσεις που πνίγονται στις συνεχείς επικοινωνίες",
       },
     ],
   },
   {
     slug: "team",
-    name: "For Your Team",
+    name: "Για την Ομάδα σου",
     services: [
       {
         n: "02",
-        title: "Web Tools",
-        text: "Give your team one clear place to see the numbers that matter, instead of digging through spreadsheets every morning.",
-        who: "For teams tired of manual work",
+        title: "Εργαλεία Web",
+        text: "Δώστε στην ομάδα σου ένα ξεκάθαρο σημείο για να βλέπει τα νούμερα που έχουν σημασία, αντί να ψάχνει σε spreadsheets κάθε πρωί.",
+        who: "Για ομάδες που κουράστηκαν από τη χειρωνακτική δουλειά",
       },
       {
         n: "06",
-        title: "Custom Tools",
-        text: "Hand your team a tool built around how they actually work, so the busywork disappears and the important stuff gets done.",
-        who: "For teams buried in repetitive tasks",
+        title: "Έξυπνα Εργαλεία",
+        text: "Δώστε στην ομάδα σου ένα εργαλείο φτιαγμένο γύρω από τον τρόπο που δουλεύει πραγματικά, ώστε η αγγαρεία να εξαφανίζεται και να γίνεται η δουλειά που μετράει.",
+        who: "Για ομάδες που έχουν πνιγεί σε επαναλαμβανόμενες εργασίες",
       },
     ],
   },
   {
     slug: "operations",
-    name: "For Your Operations",
+    name: "Για τη Λειτουργία σου",
     services: [
       {
         n: "05",
-        title: "Programs",
-        text: "Keep inventory, scheduling and reporting accurate and up to date automatically, so nothing slips through the cracks.",
-        who: "For operations that can't afford mistakes",
+        title: "Προγράμματα",
+        text: "Κρατήστε το απόθεμα, τον προγραμματισμό και τις αναφορές σωστά και ενημερωμένα αυτόματα, ώστε τίποτα να μη ξεφεύγει.",
+        who: "Για λειτουργίες που δεν έχουν περιθώριο για λάθη",
       },
       {
         n: "07",
-        title: "Automations",
-        text: "Stop copying data between apps by hand — we connect your systems so information moves itself, correctly, every time.",
-        who: "For businesses ready to stop the busywork",
+        title: "Αυτοματισμοί",
+        text: "Σταματήστε να αντιγράφετε δεδομένα ανάμεσα σε εφαρμογές με το χέρι — συνδέουμε τα συστήματά σου ώστε οι πληροφορίες να μετακινούνται μόνες τους, σωστά, κάθε φορά.",
+        who: "Για επιχειρήσεις που είναι έτοιμες να σταματήσουν την αγγαρεία",
       },
       {
         n: "08",
-        title: "Custom Digital Solutions",
-        text: "Got a problem that doesn't fit a neat category? Tell us what's slowing you down and we'll design something that fixes it.",
-        who: "For anyone with a problem worth solving",
+        title: "Έξυπνες Ψηφιακές Λύσεις",
+        text: "Έχεις ένα πρόβλημα που δεν χωράει σε κατηγορία; Πες μας τι σε καθυστερεί και θα σχεδιάσουμε κάτι που θα το λύσει.",
+        who: "Για όποιον έχει ένα πρόβλημα που αξίζει να λυθεί",
       },
     ],
   },
 ];
 
 const ideas = [
-  { icon: UtensilsCrossed, text: "A booking system for your restaurant" },
-  { icon: Boxes, text: "An inventory tool for your warehouse" },
-  { icon: Users, text: "A custom CRM for your sales team" },
-  { icon: ShoppingBag, text: "An e-commerce store for your products" },
-  { icon: Smartphone, text: "A mobile app for your customers" },
-  { icon: Zap, text: "An automation that saves you hours every week" },
+  { icon: UtensilsCrossed, text: "Ένα σύστημα κρατήσεων για το εστιατόριό σου" },
+  { icon: Boxes, text: "Ένα εργαλείο διαχείρισης αποθήκης" },
+  { icon: Users, text: "Ένα custom CRM για την ομάδα πωλήσεων" },
+  { icon: ShoppingBag, text: "Ένα ηλεκτρονικό κατάστημα για τα προϊόντα σου" },
+  { icon: Smartphone, text: "Μια εφαρμογή κινητού για τους πελάτες σου" },
+  { icon: Zap, text: "Έναν αυτοματισμό που σου εξοικονομεί ώρες κάθε εβδομάδα" },
 ];
 
 export default function ServicesSection() {
@@ -95,19 +95,19 @@ export default function ServicesSection() {
     <section id="services" data-testid="services-section" className="py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
           <Reveal>
-            <Kicker>Services</Kicker>
+            <Kicker>Υπηρεσίες</Kicker>
             <h2
               data-testid="services-headline"
               className="mt-3 font-display text-3xl md:text-5xl font-medium tracking-tight max-w-3xl"
             >
-              <WordMask text="If it lives on a screen," className="block" />
-              <WordMask text="we can build it." accent={["build", "it."]} delay={0.2} className="block" />
+              <WordMask text="Αν υπάρχει σε μια οθόνη," className="block" />
+              <WordMask text="μπορούμε να το χτίσουμε." accent={["χτίσουμε."]} delay={0.2} className="block" />
             </h2>
           </Reveal>
 
           <Reveal className="mt-10 md:mt-12">
             <p className="text-xs uppercase tracking-[0.25em] font-semibold text-ink/50">
-              A few examples
+              Μερικά παραδείγματα
             </p>
           </Reveal>
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" data-testid="ideas-grid">
@@ -130,7 +130,7 @@ export default function ServicesSection() {
 
           <Reveal className="mt-10 md:mt-12">
             <p className="text-xs uppercase tracking-[0.25em] font-semibold text-ink/50">
-              The full list — grouped by what it means for you
+              Η πλήρης λίστα — ομαδοποιημένη με βάση τι σημαίνει για εσένα
             </p>
           </Reveal>
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
@@ -164,7 +164,7 @@ export default function ServicesSection() {
                               data-testid={`service-lets-talk-${s.n}`}
                               className="group/btn inline-flex items-center gap-1.5 rounded-full border border-ink/10 px-4 py-2 text-xs font-bold text-ink transition-[background-color,border-color,transform] duration-300 hover:scale-105 hover:bg-baby hover:border-baby"
                             >
-                              Let's talk
+                              Ας μιλήσουμε
                               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:rotate-45" />
                             </button>
                           </Magnetic>
@@ -187,11 +187,11 @@ export default function ServicesSection() {
               <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-baby/40 blur-3xl" />
               <div className="relative">
                 <h3 className="font-display text-2xl md:text-3xl font-medium tracking-tighter">
-                  Not sure which one you need?
+                  Δεν είσαι σίγουρος τι χρειάζεσαι;
                 </h3>
                 <p className="mt-2 text-sm text-ink/60 max-w-lg leading-relaxed">
-                  That's normal. Tell us the problem — we'll tell you honestly what
-                  it takes to solve it.
+                  Είναι φυσιολογικό. Πες μας το πρόβλημα — θα σου πούμε ειλικρινά
+                  τι απαιτείται για να λυθεί.
                 </p>
               </div>
               <Magnetic strength={0.25} className="relative shrink-0">
@@ -200,7 +200,7 @@ export default function ServicesSection() {
                   data-testid="services-cta-button"
                   className="btn-shine group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-bold text-white transition-transform duration-300 hover:scale-105"
                 >
-                  Get a Free Estimate
+                  Ζήτησε Δωρεάν Προσφορά
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
                 </button>
               </Magnetic>

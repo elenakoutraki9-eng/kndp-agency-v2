@@ -4,10 +4,10 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { scrollToId } from "@/lib/scroll";
 
 const links = [
-  { id: "#hero", label: "Home", testid: "nav-link-home" },
-  { id: "#services", label: "Services", testid: "nav-link-services" },
-  { id: "#portfolio", label: "Portfolio", testid: "nav-link-portfolio" },
-  { id: "#contact", label: "Contact", testid: "nav-link-contact" },
+  { id: "#hero", label: "Αρχική", testid: "nav-link-home" },
+  { id: "#services", label: "Υπηρεσίες", testid: "nav-link-services" },
+  { id: "#portfolio", label: "Έργα", testid: "nav-link-portfolio" },
+  { id: "#contact", label: "Επικοινωνία", testid: "nav-link-contact" },
 ];
 
 export default function Navbar() {
@@ -77,14 +77,14 @@ export default function Navbar() {
             data-testid="nav-cta-button"
             className="btn-shine hidden md:inline-flex items-center gap-1.5 rounded-full bg-baby px-5 py-2.5 text-sm font-bold text-ink transition-[transform,background-color] duration-300 hover:scale-105 hover:bg-baby-dark"
           >
-            Get a Free Estimate
+            Ζήτησε Δωρεάν Προσφορά
             <ArrowUpRight className="h-4 w-4" />
           </button>
           <button
             data-testid="mobile-menu-button"
             onClick={() => setOpen(!open)}
             className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/10 bg-white"
-            aria-label="Toggle menu"
+            aria-label="Εναλλαγή μενού"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -125,7 +125,7 @@ export default function Navbar() {
                 data-testid="mobile-nav-cta-button"
                 className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-baby px-6 py-3.5 font-bold text-ink"
               >
-                Get a Free Estimate
+                Ζήτησε Δωρεάν Προσφορά
                 <ArrowUpRight className="h-4 w-4" />
               </button>
             </div>

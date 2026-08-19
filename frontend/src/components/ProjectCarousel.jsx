@@ -83,7 +83,7 @@ export default function ProjectCarousel({ projects }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/25 to-transparent" />
                   <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/85 backdrop-blur px-3.5 py-1.5 text-xs font-bold text-ink/70">
                     <span className="h-1.5 w-1.5 rounded-full bg-baby-dark animate-pulse" />
-                    In progress
+                    Σε εξέλιξη
                   </span>
                   <span className="absolute top-4 right-4 inline-flex rounded-full bg-ink/70 backdrop-blur px-3.5 py-1.5 text-xs font-bold text-white">
                     {p.tag}
@@ -109,7 +109,7 @@ export default function ProjectCarousel({ projects }) {
           type="button"
           onClick={() => go(-1)}
           data-testid="portfolio-carousel-prev"
-          aria-label="Previous project"
+          aria-label="Προηγούμενο έργο"
           className="group absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 inline-flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full bg-white border border-ink/10 shadow-md transition-[background-color,transform] duration-300 hover:bg-baby hover:scale-105"
         >
           <ArrowLeft className="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
@@ -118,7 +118,7 @@ export default function ProjectCarousel({ projects }) {
           type="button"
           onClick={() => go(1)}
           data-testid="portfolio-carousel-next"
-          aria-label="Next project"
+          aria-label="Επόμενο έργο"
           className="group absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 inline-flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full bg-white border border-ink/10 shadow-md transition-[background-color,transform] duration-300 hover:bg-baby hover:scale-105"
         >
           <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -134,7 +134,7 @@ export default function ProjectCarousel({ projects }) {
               setIndex(i);
             }}
             data-testid={`portfolio-dot-${i}`}
-            aria-label={`Go to project ${i + 1}`}
+            aria-label={`Μετάβαση στο έργο ${i + 1}`}
             className={`h-2 rounded-full transition-all duration-300 ${
               i === index ? "w-8 bg-baby-dark" : "w-2 bg-ink/15 hover:bg-ink/30"
             }`}

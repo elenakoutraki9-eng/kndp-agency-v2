@@ -1,0 +1,28 @@
+{
+  "summary": "Frontend-only Greek-translation QA pass on KNDP single-page site. All 4 navbar links (Αρχική, Υπηρεσίες, Έργα, Επικοινωνία) scroll to their sections. Hero word-mask animation and ChatPhone (typed Greek biz names) render cleanly. Problems/Services/HowItWorks/Portfolio/FAQ/Footer all render Greek without clipping. Portfolio carousel arrows/dots work. FAQ accordion expands/collapses. Contact form submits successfully to POST /api/contact (verified via curl round-trip: POST->200 with Greek payload, GET->200 returns persisted record). No English leftovers detected via regex scan of visible text. No backslash/unescaped-quote artifacts. No horizontal overflow on desktop (1920) or mobile (390) — only intentional rfm-marquee width. Zero JS console errors and zero pageerrors during full page load and interactions.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "POST /api/contact", "issue": "Request body sends 'services' (array) from the Greek form, but backend stores/returns only a singular 'service' field which is null in the persisted document. Data is saved (name/email/company/message) but the selected service chip value is lost. Not a translation regression — pre-existing schema mismatch."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "(Optional/pre-existing) Align Contact form payload with backend: either backend accepts services:[...] or frontend sends service:'Website'. Currently the service selection is silently dropped."
+  ],
+  "critical_code_review_comments": [
+    "ContactSection sends `services` array but backend Pydantic model expects singular `service` — selected chip is not persisted."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (POST/GET /api/contact both 200)", "frontend": "100% (all Greek sections, nav, carousel, FAQ, form, mobile)"},
+  "test_credentials": "N/A - no auth on this site",
+  "seed_data_creation": "Created a couple of TEST_ prefixed contact messages via form + curl for round-trip verification.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Nav uses data-testids nav-link-{home|services|portfolio|contact}. Contact form testids: contact-{name|email|company|message}-input, service-chip-{lowercased-english-value} (e.g. service-chip-website, NOT the Greek label), contact-submit-button. GET /api/contact returns 403 to urllib default UA but 200 to curl/browser — use requests/curl. Backend POST accepts payload but has schema mismatch: expects `service` (singular) not `services` array."
+}

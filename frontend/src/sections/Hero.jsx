@@ -7,7 +7,7 @@ import ChatPhone from "@/components/ChatPhone";
 import { StackPanel } from "@/components/StackSection";
 import { scrollToId } from "@/lib/scroll";
 
-const rotatingWords = ["Websites", "Web Apps", "Custom Tools", "Automations"];
+const rotatingWords = ["Ιστοσελίδες", "Εφαρμογές Web", "Έξυπνα Εργαλεία", "Αυτοματισμοί"];
 
 export default function Hero(props) {
   const heroRef = useRef(null);
@@ -44,15 +44,15 @@ export default function Hero(props) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <Kicker>KNDP — Digital Studio</Kicker>
+            <Kicker>KNDP — Ψηφιακό Στούντιο</Kicker>
           </motion.div>
           <h1
             data-testid="hero-headline"
             className="mt-5 font-display font-bold tracking-tighter leading-[0.95] text-5xl sm:text-6xl lg:text-6xl"
           >
-            <WordMask text="We Build" delay={0.2} className="block" />
-            <WordMask text="Whatever" accent={["Whatever"]} delay={0.4} className="block" />
-            <WordMask text="You Need." delay={0.6} className="block" />
+            <WordMask text="Χτίζουμε" delay={0.2} className="block" />
+            <WordMask text="Ό,τι" accent={["Ό,τι"]} delay={0.4} className="block" />
+            <WordMask text="Χρειάζεσαι." delay={0.6} className="block" />
           </h1>
           <motion.p
             data-testid="hero-subheading"
@@ -61,8 +61,8 @@ export default function Hero(props) {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-ink/60"
           >
-            From websites and apps to custom tools and automations, we build the
-            digital solutions your business needs to grow.
+            Από ιστοσελίδες και εφαρμογές έως έξυπνα εργαλεία και αυτοματισμούς,
+            χτίζουμε τις ψηφιακές λύσεις που η επιχείρησή σου χρειάζεται για να αναπτυχθεί.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -76,7 +76,7 @@ export default function Hero(props) {
                 data-testid="hero-cta-primary"
                 className="btn-shine group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-white transition-[transform,background-color] duration-300 hover:scale-105 hover:bg-baby-dark hover:text-ink"
               >
-                Get a Free Estimate
+                Ζήτησε Δωρεάν Προσφορά
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
               </button>
             </Magnetic>
@@ -86,7 +86,7 @@ export default function Hero(props) {
                 data-testid="hero-cta-secondary"
                 className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white/60 backdrop-blur px-7 py-3.5 text-sm font-bold text-ink transition-[transform,background-color,border-color] duration-300 hover:scale-105 hover:border-baby-dark hover:bg-baby-light"
               >
-                See What We Build
+                Δες Τι Χτίζουμε
               </button>
             </Magnetic>
           </motion.div>
@@ -95,7 +95,7 @@ export default function Hero(props) {
         <div className="lg:col-span-5 relative -top-4 md:-top-6 lg:-top-8">
           <motion.div
             style={{ x: imgMX, y: imgMY }}
-            className="[zoom:0.82] sm:[zoom:0.78] lg:[zoom:0.7] origin-top"
+            className="[zoom:0.95] sm:[zoom:0.92] lg:[zoom:0.85] origin-top"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 24 }}
@@ -135,10 +135,10 @@ export default function Hero(props) {
               className="absolute -bottom-6 -left-4 md:-left-10 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/50 shadow-xl px-6 py-5 animate-float-soft"
             >
               <p className="text-xs uppercase tracking-[0.2em] font-semibold text-ink/50">
-                End-to-end
+                Ολοκληρωμένη υπηρεσία
               </p>
               <p className="mt-1 font-display font-semibold tracking-tight">
-                Design → Build → Launch
+                Σχεδίαση → Ανάπτυξη → Κυκλοφορία
               </p>
             </motion.div>
           </motion.div>
@@ -151,7 +151,7 @@ export default function Hero(props) {
         transition={{ delay: 1.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-ink/40"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Scroll</span>
+        <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Κύλιση</span>
         <motion.span animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.8 }}>
           <ArrowDown className="h-4 w-4" />
         </motion.span>

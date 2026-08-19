@@ -7,14 +7,14 @@ import { WordMask, Reveal, Kicker, Magnetic } from "@/components/Reveal";
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const serviceOptions = [
-  "Website",
-  "Web Tool",
-  "App",
-  "Web App",
-  "Program",
-  "Custom Tool",
-  "Automation",
-  "Something Else",
+  { value: "Website", label: "Ιστότοπος" },
+  { value: "Web Tool", label: "Εργαλείο Web" },
+  { value: "App", label: "Εφαρμογή" },
+  { value: "Web App", label: "Εφαρμογή Web" },
+  { value: "Program", label: "Πρόγραμμα" },
+  { value: "Custom Tool", label: "Έξυπνο Εργαλείο" },
+  { value: "Automation", label: "Αυτοματισμός" },
+  { value: "Something Else", label: "Κάτι Άλλο" },
 ];
 
 const inputCls =
@@ -33,11 +33,11 @@ export default function ContactSection(props) {
     setSending(true);
     try {
       await axios.post(`${API}/contact`, { ...form, service });
-      toast.success("Message sent — we'll get back to you soon.");
+      toast.success("Το μήνυμα εστάλη — θα επικοινωνήσουμε σύντομα μαζί σου.");
       setForm({ name: "", email: "", company: "", message: "" });
       setService(null);
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error("Κάτι πήγε στραβά. Δοκίμασε ξανά.");
     } finally {
       setSending(false);
     }
@@ -52,18 +52,18 @@ export default function ContactSection(props) {
       <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/30 blur-3xl pointer-events-none" />
       <div className="mx-auto max-w-6xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 relative">
           <div className="lg:col-span-6">
-            <Kicker className="text-ink/70">Contact</Kicker>
+            <Kicker className="text-ink/70">Επικοινωνία</Kicker>
             <h2
               data-testid="contact-headline"
               className="mt-3 font-display font-bold tracking-tighter leading-[0.95] text-4xl md:text-5xl"
             >
-              <WordMask text="Let's" className="block" />
-              <WordMask text="talk." accent={["talk."]} delay={0.2} className="block" />
+              <WordMask text="Ας" className="block" />
+              <WordMask text="μιλήσουμε." accent={["μιλήσουμε."]} delay={0.2} className="block" />
             </h2>
             <Reveal delay={0.3}>
               <p className="mt-4 max-w-md text-sm md:text-base leading-relaxed text-ink/70">
-                Tell us what you're trying to build or fix. Free estimate, no
-                obligation — we reply within 2 hours on business days.
+                Πες μας τι θέλεις να χτίσεις ή να διορθώσεις. Δωρεάν προσφορά,
+                χωρίς καμία δέσμευση — απαντάμε εντός 2 ωρών τις εργάσιμες μέρες.
               </p>
             </Reveal>
 
@@ -78,7 +78,7 @@ export default function ContactSection(props) {
                     <Mail className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="text-xs uppercase tracking-[0.2em] font-semibold text-ink/50">Email us</p>
+                    <p className="text-xs uppercase tracking-[0.2em] font-semibold text-ink/50">Στείλε μας email</p>
                     <p className="text-sm font-semibold">hello@kndp.studio</p>
                   </div>
                 </div>
@@ -94,12 +94,12 @@ export default function ContactSection(props) {
                     <CalendarClock className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="text-xs uppercase tracking-[0.2em] font-semibold text-ink/50">Book a call</p>
-                    <p className="text-sm font-semibold">30-min intro call</p>
+                    <p className="text-xs uppercase tracking-[0.2em] font-semibold text-ink/50">Κλείσε ένα ραντεβού</p>
+                    <p className="text-sm font-semibold">30-λεπτη γνωριμία</p>
                   </div>
                 </div>
                 <span className="rounded-full bg-white border border-ink/10 px-3 py-1 text-[11px] font-bold text-baby-dark">
-                  Calendar link coming soon
+                  Σύνδεσμος ημερολογίου έρχεται σύντομα
                 </span>
               </div>
             </Reveal>
@@ -115,7 +115,7 @@ export default function ContactSection(props) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label htmlFor="contact-name" className="mb-1.5 block text-xs uppercase tracking-[0.2em] font-semibold text-ink/50">
-                      Name *
+                      Όνομα *
                     </label>
                     <input
                       id="contact-name"
@@ -123,7 +123,7 @@ export default function ContactSection(props) {
                       required
                       value={form.name}
                       onChange={set("name")}
-                      placeholder="Your name"
+                      placeholder="Το όνομά σου"
                       className={inputCls}
                     />
                   </div>
@@ -146,37 +146,37 @@ export default function ContactSection(props) {
 
                 <div className="mt-3">
                   <label htmlFor="contact-company" className="mb-1.5 block text-xs uppercase tracking-[0.2em] font-semibold text-ink/50">
-                    Company
+                    Εταιρεία
                   </label>
                   <input
                     id="contact-company"
                     data-testid="contact-company-input"
                     value={form.company}
                     onChange={set("company")}
-                    placeholder="Optional"
+                    placeholder="Προαιρετικό"
                     className={inputCls}
                   />
                 </div>
 
                 <div className="mt-4">
                   <p className="mb-2 text-xs uppercase tracking-[0.2em] font-semibold text-ink/50">
-                    What do you need?
+                    Τι χρειάζεσαι;
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {serviceOptions.map((s) => (
                       <button
-                        key={s}
+                        key={s.value}
                         type="button"
-                        data-testid={`service-chip-${s.toLowerCase().replace(/\s+/g, "-")}`}
-                        onClick={() => setService(service === s ? null : s)}
+                        data-testid={`service-chip-${s.value.toLowerCase().replace(/\s+/g, "-")}`}
+                        onClick={() => setService(service === s.value ? null : s.value)}
                         className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-[background-color,border-color,color,transform] duration-300 hover:scale-105 active:scale-95 ${
-                          service === s
+                          service === s.value
                             ? "bg-ink text-white border-ink"
                             : "bg-white text-ink/70 border-ink/10 hover:border-baby-dark"
                         }`}
                       >
-                        {service === s && <Check className="h-3 w-3" />}
-                        {s}
+                        {service === s.value && <Check className="h-3 w-3" />}
+                        {s.label}
                       </button>
                     ))}
                   </div>
@@ -184,7 +184,7 @@ export default function ContactSection(props) {
 
                 <div className="mt-4">
                   <label htmlFor="contact-message" className="mb-1.5 block text-xs uppercase tracking-[0.2em] font-semibold text-ink/50">
-                    Tell us about it *
+                    Πες μας περισσότερα *
                   </label>
                   <textarea
                     id="contact-message"
@@ -193,7 +193,7 @@ export default function ContactSection(props) {
                     rows={3}
                     value={form.message}
                     onChange={set("message")}
-                    placeholder="What are you trying to build or fix? Rough ideas are totally fine."
+                    placeholder="Τι θέλεις να χτίσεις ή να διορθώσεις; Μια αρχική ιδέα είναι απόλυτα εντάξει."
                     className={`${inputCls} resize-none`}
                   />
                 </div>
@@ -205,7 +205,7 @@ export default function ContactSection(props) {
                     disabled={sending}
                     className="btn-shine group mt-5 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ink px-7 py-3 text-sm font-bold text-white transition-[transform,opacity] duration-300 hover:scale-105 disabled:opacity-60 disabled:hover:scale-100"
                   >
-                    {sending ? "Sending…" : "Send Message"}
+                    {sending ? "Αποστολή…" : "Αποστολή Μηνύματος"}
                     <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </button>
                 </Magnetic>
@@ -214,7 +214,7 @@ export default function ContactSection(props) {
                   className="mt-3 flex items-center gap-2 text-xs font-semibold text-ink/55"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-baby-dark" />
-                  Free, no-obligation estimate — we reply within 2 hours on business days.
+                  Δωρεάν προσφορά χωρίς δέσμευση — απαντάμε εντός 2 ωρών τις εργάσιμες μέρες.
                 </p>
               </form>
             </Reveal>

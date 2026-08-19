@@ -7,20 +7,20 @@ const steps = [
   {
     n: "01",
     icon: MessageSquareText,
-    title: "Tell us your problem",
-    text: "Describe what you need or what's slowing you down — a short message is enough.",
+    title: "Πες μας το πρόβλημά σου",
+    text: "Περιγράψτε τι χρειάζεστε ή τι σας καθυστερεί — ένα σύντομο μήνυμα αρκεί.",
   },
   {
     n: "02",
     icon: FileText,
-    title: "Get a free plan + quote",
-    text: "We send you a clear proposal within 48 hours. No commitment, no fine print.",
+    title: "Πάρε δωρεάν σχέδιο & προσφορά",
+    text: "Σου στέλνουμε μια ξεκάθαρη πρόταση εντός 48 ωρών. Καμία δέσμευση, χωρίς μικρά γράμματα.",
   },
   {
     n: "03",
     icon: Rocket,
-    title: "We build it",
-    text: "Your solution goes live fast — built exactly for you, owned entirely by you.",
+    title: "Το χτίζουμε",
+    text: "Η λύση σου βγαίνει live γρήγορα — φτιαγμένη αποκλειστικά για εσένα, δική σου εξ ολοκλήρου.",
   },
 ];
 
@@ -34,13 +34,13 @@ export default function HowItWorksSection(props) {
       <section id="how-it-works" data-testid="how-it-works-section" className="py-12 md:py-16 relative">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <Reveal>
-            <Kicker light>How it works</Kicker>
+            <Kicker light>Πώς δουλεύουμε</Kicker>
             <h2
               data-testid="how-it-works-headline"
               className="mt-3 font-display font-medium tracking-tight text-3xl md:text-5xl"
             >
-              <WordMask text="Three steps." className="inline-block" />{" "}
-              <WordMask text="No hassle." accent={["No", "hassle."]} delay={0.2} className="inline-block" />
+              <WordMask text="Τρία βήματα." className="inline-block" />{" "}
+              <WordMask text="Καμία ταλαιπωρία." accent={["Καμία", "ταλαιπωρία."]} delay={0.2} className="inline-block" />
             </h2>
           </Reveal>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -73,12 +73,12 @@ export default function HowItWorksSection(props) {
                 data-testid="how-it-works-cta-button"
                 className="btn-shine group inline-flex items-center gap-2 rounded-full bg-baby px-6 py-3 text-sm font-bold text-ink transition-transform duration-300 hover:scale-105"
               >
-                Get a Free Estimate
+                Ζήτησε Δωρεάν Προσφορά
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
               </button>
             </Magnetic>
             <p className="text-sm font-semibold text-white/50">
-              Free plan within 48 hours — no commitment.
+              Δωρεάν σχέδιο εντός 48 ωρών — χωρίς δέσμευση.
             </p>
           </Reveal>
         </div>

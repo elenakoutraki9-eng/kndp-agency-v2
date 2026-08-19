@@ -18,43 +18,43 @@ import {
 
 const BUSINESSES = [
   {
-    name: "Restaurant",
+    name: "Εστιατόριο",
     icon: UtensilsCrossed,
     results: [
-      { label: "Online Menu & Ordering App", icon: UtensilsCrossed },
-      { label: "Booking & Reservations System", icon: CalendarCheck },
-      { label: "Loyalty Rewards Program", icon: Gift },
-      { label: "Staff Scheduling Tool", icon: Users },
+      { label: "Online Μενού & Παραγγελίες", icon: UtensilsCrossed },
+      { label: "Σύστημα Κρατήσεων", icon: CalendarCheck },
+      { label: "Πρόγραμμα Επιβράβευσης", icon: Gift },
+      { label: "Εργαλείο Προγραμματισμού Προσωπικού", icon: Users },
     ],
   },
   {
-    name: "Salon",
+    name: "Κομμωτήριο",
     icon: Scissors,
     results: [
-      { label: "Online Appointment Booking", icon: CalendarCheck },
-      { label: "Client Loyalty Rewards", icon: Gift },
-      { label: "Staff Schedule Manager", icon: Users },
-      { label: "SMS Appointment Reminders", icon: MessageSquare },
+      { label: "Online Κράτηση Ραντεβού", icon: CalendarCheck },
+      { label: "Επιβράβευση Πελατών", icon: Gift },
+      { label: "Διαχείριση Προγράμματος Προσωπικού", icon: Users },
+      { label: "Υπενθυμίσεις Ραντεβού με SMS", icon: MessageSquare },
     ],
   },
   {
-    name: "Gym",
+    name: "Γυμναστήριο",
     icon: Dumbbell,
     results: [
-      { label: "Class Booking & Scheduling", icon: CalendarCheck },
-      { label: "Membership Management Portal", icon: CreditCard },
-      { label: "Progress Tracking App", icon: TrendingUp },
-      { label: "Automated Renewal Reminders", icon: Bell },
+      { label: "Κράτηση & Πρόγραμμα Μαθημάτων", icon: CalendarCheck },
+      { label: "Πλατφόρμα Διαχείρισης Συνδρομών", icon: CreditCard },
+      { label: "Εφαρμογή Παρακολούθησης Προόδου", icon: TrendingUp },
+      { label: "Αυτόματες Υπενθυμίσεις Ανανέωσης", icon: Bell },
     ],
   },
   {
-    name: "Retail Store",
+    name: "Κατάστημα Λιανικής",
     icon: ShoppingBag,
     results: [
-      { label: "E-Commerce Storefront", icon: ShoppingBag },
-      { label: "Inventory Management Tool", icon: Boxes },
-      { label: "Loyalty Rewards Program", icon: Gift },
-      { label: "Point-of-Sale Integration", icon: CreditCard },
+      { label: "Ηλεκτρονικό Κατάστημα", icon: ShoppingBag },
+      { label: "Εργαλείο Διαχείρισης Αποθήκης", icon: Boxes },
+      { label: "Πρόγραμμα Επιβράβευσης", icon: Gift },
+      { label: "Ενσωμάτωση Ταμειακού Συστήματος (POS)", icon: CreditCard },
     ],
   },
 ];
@@ -140,7 +140,7 @@ export default function ChatPhone() {
               </span>
               <div>
                 <p className="text-xs font-bold text-ink leading-tight">KNDP Studio</p>
-                <p className="text-[10px] text-ink/45">What can we build for you?</p>
+                <p className="text-[10px] text-ink/45">Τι μπορούμε να χτίσουμε για εσένα;</p>
               </div>
             </div>
           </div>
@@ -161,13 +161,13 @@ export default function ChatPhone() {
                   className="absolute inset-0 flex flex-col items-center justify-center gap-5 px-6"
                 >
                   <p className="text-xs font-bold text-ink/50 uppercase tracking-[0.15em]">
-                    What&apos;s your business?
+                    Τι επιχείρηση έχεις;
                   </p>
                   <div className="w-full rounded-2xl border border-ink/10 bg-mist px-4 py-3.5 flex items-center">
                     {typedText ? (
                       <span className="text-sm font-semibold text-ink">{typedText}</span>
                     ) : (
-                      <span className="text-sm font-medium text-ink/35">Enter your business...</span>
+                      <span className="text-sm font-medium text-ink/35">Γράψε την επιχείρησή σου...</span>
                     )}
                     <Cursor />
                   </div>
@@ -186,7 +186,7 @@ export default function ChatPhone() {
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="inline-flex items-center gap-2 rounded-full bg-baby px-5 py-2.5 text-xs font-extrabold text-ink"
                       >
-                        See what we can build
+                        Δες τι μπορούμε να χτίσουμε
                         <ArrowRight className="h-3.5 w-3.5" />
                       </motion.button>
                     )}
@@ -204,7 +204,7 @@ export default function ChatPhone() {
                 >
                   <p className="text-[11px] font-bold text-ink/50 flex items-center gap-1.5">
                     <business.icon className="h-3.5 w-3.5 text-baby-dark" />
-                    Perfect for a {business.name}
+                    Ιδανικό για {business.name}
                   </p>
                   <div className="mt-3 flex-1 flex flex-col gap-2 overflow-hidden">
                     {business.results.slice(0, resultsShown).map((r, i) => (
@@ -232,7 +232,7 @@ export default function ChatPhone() {
             <div className="flex items-center justify-center gap-2 rounded-full bg-mist px-3.5 py-2.5">
               <ArrowRight className="h-3 w-3 text-baby-dark" />
               <span className="text-[10px] font-semibold text-ink/50">
-                Tell us your idea — see it come to life
+                Πες μας την ιδέα σου — δες τη να ζωντανεύει
               </span>
             </div>
           </div>
