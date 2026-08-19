@@ -33,6 +33,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 - 2026-08-19: Removed the About section entirely (incl. founder story, Why KNDP, values, Who Is KNDP For grid) and the About link from navbar + footer. Flow: Hero → Problem→Solution → Services → How It Works → Portfolio → Testimonials → FAQ → Contact.
 - 2026-08-19: Replaced hero photo with animated phone mockup (ChatPhone component) — looping chat conversation (customer left/grey, KNDP right/baby blue) with typing indicators and a mini booking-app preview card with check animation; ~10s loop.
 
+
+- 2026-07: Added animated service mockups — a browser-window mockup (header→text→button fade-in loop) in service row 01 (Websites) and a dark phone-frame mockup (tap ripple + screen transition loop) in service row 03 (Apps), matching white/baby-blue palette. New components: BrowserBuildMockup.jsx, PhoneTapMockup.jsx.
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).
