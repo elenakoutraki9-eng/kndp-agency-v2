@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Test the redesigned 'Our Work' / Portfolio section on the KNDP agency site with new 3D coverflow-style carousel. Verify center card visibility, side cards depth effect, arrow navigation with wrapping, dot indicators, mobile swipe gestures, no console errors, color palette (white/baby-blue), and CTA button functionality. Quick regression test of other sections."
+user_problem_statement: "Re-test the 'Our Work' / Portfolio carousel on KNDP agency site. The 3D stacked/coverflow depth effect has been REMOVED. It's now a simple single-card-at-a-time slide carousel. Verify only ONE project card visible at a time (no faded side cards), arrow navigation with wrapping, dot indicators with direct jump, mobile swipe gestures, no console errors, white/baby-blue palette intact, and quick regression of hero, services, and contact form CTA."
 
 frontend:
   - task: "Browser Build Mockup Animation in Service Row 01"
@@ -164,8 +164,11 @@ frontend:
         - working: true
           agent: "testing"
           comment: "✅ No console errors detected during testing. No page errors or warnings. Framer Motion animations running smoothly without performance issues. All data-testid attributes present and accessible for testing."
+        - working: true
+          agent: "testing"
+          comment: "✅ RE-TESTED: No console errors detected during comprehensive testing of new single-card carousel. No page errors or warnings. Framer Motion AnimatePresence animations running smoothly. All transitions smooth without performance issues."
 
-  - task: "3D Coverflow Carousel in Portfolio Section"
+  - task: "Single-Card Carousel in Portfolio Section (3D Effect Removed)"
     implemented: true
     working: true
     file: "/app/frontend/src/components/ProjectCarousel.jsx"
@@ -176,6 +179,9 @@ frontend:
         - working: true
           agent: "testing"
           comment: "✅ 3D coverflow carousel (data-testid='portfolio-carousel') fully functional. Center card (card-0) is fully opaque (opacity: 1) and properly sized (380x481px). Side cards show perfect depth effect: offset ±1 cards have opacity 0.55 and scale 0.82, offset ±2 cards have opacity 0.25 and scale 0.68. 3D rotateY transforms visible in matrix3d. Carousel renders 5 visible cards at a time (center + 2 on each side) as designed."
+        - working: true
+          agent: "testing"
+          comment: "✅ RE-TESTED: 3D coverflow effect successfully REMOVED. Carousel now displays single card at a time using AnimatePresence with mode='wait'. Only 1 card rendered in DOM at any time (confirmed). Card has full opacity (1.0) with no scale/rotateY transforms. Simple slide transitions with x-offset and opacity fade (spring animation: stiffness 260, damping 28). No leftover faded/scaled side cards visible. Clean single-card carousel implementation confirmed."
 
   - task: "Carousel Arrow Navigation and Wrapping"
     implemented: true
@@ -188,6 +194,9 @@ frontend:
         - working: true
           agent: "testing"
           comment: "✅ Next arrow (data-testid='portfolio-carousel-next') and prev arrow (data-testid='portfolio-carousel-prev') both functional. Navigation advances/retreats through all 6 projects correctly. Wrapping works perfectly - clicking prev from card-0 wraps to card-5, clicking next from card-5 wraps to card-0. Spring animations smooth (stiffness: 260, damping: 28)."
+        - working: true
+          agent: "testing"
+          comment: "✅ RE-TESTED: Arrow navigation working perfectly with new single-card carousel. Next arrow advances card-0→card-1 correctly. Prev arrow retreats correctly. Wrapping confirmed: prev from card-0 wraps to card-5, next from card-5 wraps to card-0. Only 1 card visible during all transitions. Spring animations remain smooth."
 
   - task: "Carousel Dot Indicators"
     implemented: true
@@ -200,6 +209,9 @@ frontend:
         - working: true
           agent: "testing"
           comment: "✅ All 6 dot indicators (data-testid='portfolio-dot-0' through 'portfolio-dot-5') present and clickable. Active dot correctly styled with wider width (w-8) and darker baby-blue color (bg-baby-dark). Clicking any dot jumps directly to that project and updates active state. Inactive dots are smaller (w-2) with lighter color (bg-ink/15)."
+        - working: true
+          agent: "testing"
+          comment: "✅ RE-TESTED: All 6 dot indicators working perfectly. Each dot (0-5) jumps directly to correct project card. Active dot styling confirmed: width=32px (w-8) with baby-dark color rgb(79,179,227). Inactive dots: width=8px (w-2) with bg-ink/15 rgba(10,10,10,0.15). Active state updates correctly on every click."
 
   - task: "Mobile Swipe Gestures on Carousel"
     implemented: true
@@ -212,6 +224,9 @@ frontend:
         - working: true
           agent: "testing"
           comment: "✅ Mobile swipe gestures working correctly on 390x844 viewport. Carousel track (data-testid='portfolio-carousel-track') supports drag with Framer Motion. Swipe left advances to next card, swipe right goes to previous card. Drag threshold set at 60px offset. dragElastic: 0.6 provides smooth feel. Cursor changes to grab/grabbing during interaction."
+        - working: true
+          agent: "testing"
+          comment: "✅ RE-TESTED: Mobile swipe gestures working perfectly on 390x844 viewport. Swipe left (150px drag) advances card-2→card-3 correctly. Swipe right (150px drag) retreats card-3→card-2 correctly. Drag threshold 60px confirmed in code. dragElastic 0.6 provides smooth interaction. Single card remains visible during all swipe gestures."
 
   - task: "Portfolio CTA Button and Smooth Scroll"
     implemented: true
@@ -224,6 +239,9 @@ frontend:
         - working: true
           agent: "testing"
           comment: "✅ CTA button 'Get a Free Estimate' (data-testid='portfolio-cta-button') below carousel scrolls correctly to contact section using scrollToId('#contact'). Lenis smooth scroll working properly with lerp: 0.09. Button has proper hover effects (scale-105, baby-dark background). Magnetic component wrapper adds interactive feel."
+        - working: true
+          agent: "testing"
+          comment: "✅ RE-TESTED: CTA button working perfectly. Clicking 'Get a Free Estimate' (data-testid='portfolio-cta-button') scrolls smoothly to contact section. Contact section becomes visible after click. Lenis smooth scroll functioning correctly."
 
   - task: "Portfolio Section Color Palette and Styling"
     implemented: true
@@ -236,6 +254,9 @@ frontend:
         - working: true
           agent: "testing"
           comment: "✅ Color palette consistent with white/baby-blue theme. Active carousel card has baby-blue border (border-baby/50) and shadow (shadow-baby/25). Dot indicators use baby-dark for active state. Section background is mist color with rounded corners (2.5rem). Gradient overlays on card images use ink color. All styling matches design system."
+        - working: true
+          agent: "testing"
+          comment: "✅ RE-TESTED: Color palette remains consistent with white/baby-blue theme in new single-card carousel. Cards have baby-blue border (border-baby/50) and shadow (shadow-baby/25). Active dot uses baby-dark rgb(79,179,227). Section background mist color intact. All styling preserved after 3D effect removal."
 
   - task: "Regression Test - Portfolio Update Impact"
     implemented: true
@@ -248,17 +269,20 @@ frontend:
         - working: true
           agent: "testing"
           comment: "✅ Regression test passed. Hero section, Services section (with animated mockups), and Contact section all remain functional after Portfolio carousel implementation. Navbar navigation (data-testid='nav-link-home', 'nav-link-services', 'nav-link-portfolio', 'nav-link-contact') works correctly. Contact form visible and accessible. No layout breakage detected. Lenis smooth scroll functioning across all sections."
+        - working: true
+          agent: "testing"
+          comment: "✅ RE-TESTED: Quick regression test passed after carousel redesign. Hero section renders correctly (data-testid='hero-section'). Services section renders correctly (data-testid='services-list-section'). Contact section renders correctly (data-testid='contact-section'). All navbar links functional. No layout breakage from 3D effect removal. Lenis smooth scroll working across all sections."
 
 metadata:
   created_by: "testing_agent"
-  version: "1.1"
-  test_sequence: 2
+  version: "1.2"
+  test_sequence: 3
   run_ui: true
   test_date: "2025-01-XX"
 
 test_plan:
   current_focus:
-    - "3D Coverflow Carousel in Portfolio Section"
+    - "Single-Card Carousel in Portfolio Section (3D Effect Removed)"
     - "Carousel Arrow Navigation and Wrapping"
     - "Carousel Dot Indicators"
     - "Mobile Swipe Gestures on Carousel"
@@ -271,3 +295,5 @@ agent_communication:
       message: "Completed comprehensive testing of Services section mockups. Both animated mockups (BrowserBuildMockup and PhoneTapMockup) are functioning correctly with smooth animations and proper positioning. No console errors detected. Regression testing confirms no layout breakage in other sections (Hero, Portfolio, Contact). All navbar navigation working correctly with Lenis smooth scroll. The implementation is production-ready."
     - agent: "testing"
       message: "Completed comprehensive testing of redesigned Portfolio section with 3D coverflow carousel. ALL TESTS PASSED SUCCESSFULLY. The carousel implementation is excellent with perfect 3D depth effects (opacity and scale transitions), smooth spring animations, functional arrow navigation with wrapping, clickable dot indicators with proper active states, and working mobile swipe gestures. CTA button scrolls correctly to contact. No console errors detected. Color palette (white/baby-blue) is consistent. Regression test confirms all other sections (Hero, Services, Contact) remain functional. The Portfolio carousel is production-ready and meets all requirements."
+    - agent: "testing"
+      message: "RE-TESTED Portfolio carousel after 3D coverflow effect removal. ALL TESTS PASSED SUCCESSFULLY. The carousel has been successfully converted to a simple single-card-at-a-time slide carousel. Only 1 card renders in DOM at any time (confirmed via DOM inspection). No leftover faded/scaled side cards visible. Arrow navigation (next/prev) works perfectly with wrapping (card-0↔card-5). All 6 dot indicators jump directly to correct cards with proper active state styling (32px vs 8px width). Mobile swipe gestures (390x844 viewport) work correctly - swipe left advances, swipe right retreats. No console errors detected. White/baby-blue color palette intact. Quick regression test confirms Hero, Services, and Contact sections remain functional. CTA button scrolls to contact correctly. The new single-card carousel implementation is production-ready and meets all requirements."

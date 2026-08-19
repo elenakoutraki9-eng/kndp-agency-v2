@@ -35,7 +35,7 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 
 
 
-- 2026-07: Replaced Portfolio's 6-card grid with a 3D coverflow carousel (ProjectCarousel.jsx) — center card large/opaque, side cards smaller/faded with rotateY depth, prev/next arrow buttons, clickable dot indicators, swipe/drag support (framer-motion), wraps at both ends.
+- 2026-07: Portfolio carousel (ProjectCarousel.jsx) — removed the 3D stacked/coverflow depth effect (no more faded/scaled/rotated side cards); now a single-card-at-a-time slide carousel with the same arrow buttons, dot indicators, swipe/drag, and wrap-around.
 
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
