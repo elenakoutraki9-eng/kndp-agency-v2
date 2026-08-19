@@ -61,6 +61,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 
 - 2026-07: Added a phone mockup (ServicesPhoneMockup.jsx) to the Services section, sitting alongside the grouped service category cards (sticky on desktop, stacked below on mobile). Cycles through 3 mini screens on a 2.6s loop: website/landing page, mobile app UI, and dashboard/web tool, with progress dots + label, in white/baby-blue palette.
 
+
+- 2026-07: Replaced Hero phone mockup content (was notification feed) with an interactive "business idea generator" demo (ChatPhone.jsx) — typed business name (Restaurant/Salon/Gym/Retail Store) -> CTA button tap -> results screen with 4 relevant build ideas popping in, looping continuously. Implemented via async/await timeout chain (not setInterval) to avoid the double-increment cycling bug seen in the earlier notification-feed version.
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).
