@@ -92,7 +92,7 @@ export default function Hero(props) {
           </motion.div>
         </div>
 
-        <div className="lg:col-span-5 relative -top-[11px] md:-top-[19px] lg:-top-[27px]">
+        <div className="lg:col-span-5 relative -top-[6px] md:-top-[14px] lg:-top-[22px]">
           <motion.div
             style={{ x: imgMX, y: imgMY }}
             className="[zoom:0.89] sm:[zoom:0.87] lg:[zoom:0.8] origin-top"
