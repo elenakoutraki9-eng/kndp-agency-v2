@@ -40,46 +40,72 @@ const offerings = [
   },
 ];
 
-const services = [
+const categories = [
   {
-    n: "01",
-    title: "Websites",
-    text: "Marketing sites, landing pages and full company websites — fast, sharp and built to convert.",
+    slug: "customers",
+    name: "For Your Customers",
+    services: [
+      {
+        n: "01",
+        title: "Websites",
+        text: "Turn visitors into paying customers with a fast, sharp site that makes it obvious why they should pick you over anyone else.",
+        who: "For businesses wanting more leads",
+      },
+      {
+        n: "03",
+        title: "Apps",
+        text: "Give customers a reason to come back — booking, ordering or managing their account in a few taps, right from their phone.",
+        who: "For businesses building customer loyalty",
+      },
+      {
+        n: "04",
+        title: "Web Apps",
+        text: "Let customers book, pay and manage everything themselves, so your team spends less time on the phone and more time on real work.",
+        who: "For businesses drowning in back-and-forth",
+      },
+    ],
   },
   {
-    n: "02",
-    title: "Web Tools",
-    text: "Calculators, portals, dashboards and browser-based tools your customers or team use every day.",
+    slug: "team",
+    name: "For Your Team",
+    services: [
+      {
+        n: "02",
+        title: "Web Tools",
+        text: "Give your team one clear place to see the numbers that matter, instead of digging through spreadsheets every morning.",
+        who: "For teams tired of manual work",
+      },
+      {
+        n: "06",
+        title: "Custom Tools",
+        text: "Hand your team a tool built around how they actually work, so the busywork disappears and the important stuff gets done.",
+        who: "For teams buried in repetitive tasks",
+      },
+    ],
   },
   {
-    n: "03",
-    title: "Apps",
-    text: "Mobile apps for iOS and Android that put your business in your customers' pockets.",
-  },
-  {
-    n: "04",
-    title: "Web Apps",
-    text: "Full-featured platforms — booking systems, client portals, marketplaces, internal systems.",
-  },
-  {
-    n: "05",
-    title: "Programs",
-    text: "Custom software programs built for specific jobs: inventory, scheduling, reporting, operations.",
-  },
-  {
-    n: "06",
-    title: "Custom Tools",
-    text: "Smart, tailored tools that handle the heavy lifting — data processing, document generation, intelligent workflows.",
-  },
-  {
-    n: "07",
-    title: "Automations",
-    text: "We connect your apps and systems so data flows by itself — no more copy-paste, no more manual busywork.",
-  },
-  {
-    n: "08",
-    title: "Custom Digital Solutions",
-    text: "Something else entirely? If it's digital, we can build it. Tell us the problem — we'll design the solution.",
+    slug: "operations",
+    name: "For Your Operations",
+    services: [
+      {
+        n: "05",
+        title: "Programs",
+        text: "Keep inventory, scheduling and reporting accurate and up to date automatically, so nothing slips through the cracks.",
+        who: "For operations that can't afford mistakes",
+      },
+      {
+        n: "07",
+        title: "Automations",
+        text: "Stop copying data between apps by hand — we connect your systems so information moves itself, correctly, every time.",
+        who: "For businesses ready to stop the busywork",
+      },
+      {
+        n: "08",
+        title: "Custom Digital Solutions",
+        text: "Got a problem that doesn't fit a neat category? Tell us what's slowing you down and we'll design something that fixes it.",
+        who: "For anyone with a problem worth solving",
+      },
+    ],
   },
 ];
 
@@ -151,32 +177,48 @@ export default function ServicesSection() {
 
           <Reveal className="mt-10 md:mt-12">
             <p className="text-xs uppercase tracking-[0.25em] font-semibold text-ink/50">
-              The full list — eight ways we help
+              The full list — grouped by what it means for you
             </p>
           </Reveal>
-          <div className="mt-4 border-t border-ink/10" data-testid="services-list-section">
-            {services.map((s, i) => (
-              <Reveal key={s.n} delay={0.04 * i} x={-40} y={0}>
-                <div
-                  data-testid={`service-row-${s.n}`}
-                  className="group grid grid-cols-12 gap-3 md:gap-6 items-center border-b border-ink/10 py-4 md:py-5 transition-colors duration-500 hover:bg-baby-light/60 cursor-default"
-                >
-                  <span className="col-span-3 md:col-span-1 font-display text-lg md:text-2xl font-light text-baby-dark transition-transform duration-500 group-hover:scale-110 origin-left">
-                    {s.n}
-                  </span>
-                  <h3 className="col-span-9 md:col-span-4 font-display text-lg md:text-2xl font-medium tracking-tight transition-transform duration-500 group-hover:translate-x-2">
-                    {s.title}
-                  </h3>
-                  <p className="col-span-9 col-start-4 md:col-span-5 md:col-start-6 text-sm text-ink/60 leading-relaxed">
-                    {s.text}
+          <div className="mt-6 space-y-10" data-testid="services-categories">
+            {categories.map((cat, ci) => (
+              <div key={cat.slug} data-testid={`services-category-${cat.slug}`}>
+                <Reveal delay={0.05 * ci}>
+                  <p className="text-sm font-display font-semibold text-baby-dark tracking-tight">
+                    {cat.name}
                   </p>
-                  <span className="hidden md:flex md:col-span-2 justify-end">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 transition-[background-color,transform] duration-500 group-hover:bg-baby group-hover:rotate-45">
-                      <ArrowUpRight className="h-4 w-4" />
-                    </span>
-                  </span>
+                </Reveal>
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {cat.services.map((s, i) => (
+                    <Reveal key={s.n} delay={0.05 * i}>
+                      <div
+                        data-testid={`service-card-${s.n}`}
+                        className="group h-full flex flex-col rounded-2xl border border-ink/8 bg-white p-5 md:p-6 transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-baby/15 hover:border-baby/50"
+                      >
+                        <span className="font-display text-sm font-light text-baby-dark">{s.n}</span>
+                        <h4 className="mt-2 font-display text-lg md:text-xl font-medium tracking-tight">
+                          {s.title}
+                        </h4>
+                        <p className="mt-2 text-sm text-ink/60 leading-relaxed flex-1">{s.text}</p>
+                        <p className="mt-3 text-xs font-semibold text-baby-dark/80 uppercase tracking-wide">
+                          {s.who}
+                        </p>
+                        <Magnetic strength={0.2} className="mt-4 self-start">
+                          <button
+                            type="button"
+                            onClick={() => scrollToId("#contact")}
+                            data-testid={`service-lets-talk-${s.n}`}
+                            className="group/btn inline-flex items-center gap-1.5 rounded-full border border-ink/10 px-4 py-2 text-xs font-bold text-ink transition-[background-color,border-color,transform] duration-300 hover:scale-105 hover:bg-baby hover:border-baby"
+                          >
+                            Let's talk
+                            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:rotate-45" />
+                          </button>
+                        </Magnetic>
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
-              </Reveal>
+              </div>
             ))}
           </div>
 

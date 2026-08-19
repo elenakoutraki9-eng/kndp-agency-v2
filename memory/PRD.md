@@ -46,6 +46,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 
 - 2026-07: Removed the Hero stats row (Projects on the bench / Response time promise / Typical website delivery counters).
 
+
+- 2026-07: Redesigned Services' 8-item list into 3 grouped categories (For Your Customers / For Your Team / For Your Operations); rewrote all 8 descriptions to be outcome/customer-focused, added a "who this is for" line per card, and a per-card "Let's talk" button scrolling to Contact. Kept existing white/baby-blue card styling; no animated mockups exist on any card currently (previously removed per earlier request).
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).
