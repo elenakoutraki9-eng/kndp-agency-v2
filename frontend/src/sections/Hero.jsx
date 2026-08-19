@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { ArrowUpRight, ArrowDown, Check } from "lucide-react";
 import { Kicker, WordMask, Counter, Magnetic } from "@/components/Reveal";
 import HeroBackground, { useMouseParallax } from "@/components/HeroBackground";
+import { StackPanel } from "@/components/StackSection";
 import { scrollToId } from "@/lib/scroll";
 
 const HERO_IMG = "https://images.pexels.com/photos/31068011/pexels-photo-31068011.jpeg?auto=compress&cs=tinysrgb&w=1000";
@@ -17,7 +18,7 @@ const stats = [
 
 const promises = ["Free estimate", "Reply within 2 hours", "You own everything"];
 
-export default function Hero() {
+export default function Hero(props) {
   const heroRef = useRef(null);
   const { mx, my, onMouseMove, onMouseLeave } = useMouseParallax();
   const { scrollYProgress } = useScroll({
@@ -35,8 +36,9 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      id="hero"
+    <StackPanel {...props} innerClassName="bg-paper">
+      <section
+        id="hero"
       ref={heroRef}
       data-testid="hero-section"
       onMouseMove={onMouseMove}
@@ -200,6 +202,7 @@ export default function Hero() {
           <ArrowDown className="h-4 w-4" />
         </motion.span>
       </motion.div>
-    </section>
+      </section>
+    </StackPanel>
   );
 }

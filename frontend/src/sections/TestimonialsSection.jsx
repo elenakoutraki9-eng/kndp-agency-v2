@@ -1,6 +1,5 @@
 import { Quote, Star } from "lucide-react";
 import { WordMask, Reveal, Kicker } from "@/components/Reveal";
-import { StackPanel } from "@/components/StackSection";
 
 const placeholders = [
   { name: "Client story 01", role: "Restaurant owner" },
@@ -8,14 +7,10 @@ const placeholders = [
   { name: "Client story 03", role: "Operations manager" },
 ];
 
-export default function TestimonialsSection(props) {
+export default function TestimonialsSection() {
   return (
-    <StackPanel
-      {...props}
-      innerClassName="rounded-[2.5rem] bg-white border border-ink/5 shadow-2xl shadow-ink/10 overflow-hidden"
-    >
-      <section id="testimonials" data-testid="testimonials-section" className="py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+    <section id="testimonials" data-testid="testimonials-section" className="py-20 md:py-28 bg-mist">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
           <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
               <Kicker>Testimonials</Kicker>
@@ -46,7 +41,7 @@ export default function TestimonialsSection(props) {
               <Reveal key={p.name} delay={0.08 * i}>
                 <div
                   data-testid={`testimonial-card-${i}`}
-                  className="group h-full rounded-3xl border border-ink/8 bg-mist p-8 flex flex-col transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-baby/15 hover:border-baby/50"
+                  className="group h-full rounded-3xl border border-ink/8 bg-white p-8 flex flex-col transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-baby/15 hover:border-baby/50"
                 >
                   <div className="flex items-center justify-between">
                     <Quote className="h-7 w-7 text-baby-dark" />
@@ -81,7 +76,6 @@ export default function TestimonialsSection(props) {
             ))}
           </div>
         </div>
-      </section>
-    </StackPanel>
+    </section>
   );
 }

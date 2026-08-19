@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import { WordMask, Reveal, Kicker } from "@/components/Reveal";
-import { StackPanel } from "@/components/StackSection";
 
 const faqs = [
   {
@@ -81,16 +80,12 @@ const FaqItem = ({ faq, index, open, onToggle }) => (
   </div>
 );
 
-export default function FaqSection(props) {
+export default function FaqSection() {
   const [open, setOpen] = useState(0);
 
   return (
-    <StackPanel
-      {...props}
-      innerClassName="rounded-[2.5rem] bg-mist border border-ink/5 shadow-2xl shadow-ink/10 overflow-hidden"
-    >
-      <section id="faq" data-testid="faq-section" className="py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <section id="faq" data-testid="faq-section" className="py-20 md:py-28 bg-white">
+      <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
             <Reveal>
               <Kicker>FAQ</Kicker>
@@ -122,8 +117,7 @@ export default function FaqSection(props) {
               </div>
             </Reveal>
           </div>
-        </div>
-      </section>
-    </StackPanel>
+      </div>
+    </section>
   );
 }

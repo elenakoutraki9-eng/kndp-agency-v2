@@ -1,6 +1,18 @@
-import { ArrowUpRight, Handshake, MessageSquare, ShieldCheck } from "lucide-react";
+import {
+  ArrowUpRight,
+  Handshake,
+  MessageSquare,
+  ShieldCheck,
+  UtensilsCrossed,
+  Store,
+  Rocket,
+  HeartPulse,
+  Truck,
+  Briefcase,
+  ShoppingCart,
+  Sparkles,
+} from "lucide-react";
 import { WordMask, Reveal, Kicker, ParallaxY, Magnetic } from "@/components/Reveal";
-import { StackPanel } from "@/components/StackSection";
 import { scrollToId } from "@/lib/scroll";
 
 const FOUNDER_IMG = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop";
@@ -47,20 +59,26 @@ const values = [
   },
 ];
 
-export default function AboutSection(props) {
+const businessTypes = [
+  { icon: UtensilsCrossed, label: "Restaurants" },
+  { icon: Store, label: "Retail stores" },
+  { icon: Rocket, label: "Startups" },
+  { icon: HeartPulse, label: "Clinics & healthcare" },
+  { icon: Truck, label: "Logistics & warehouses" },
+  { icon: Briefcase, label: "Service businesses" },
+  { icon: ShoppingCart, label: "E-commerce brands" },
+];
+
+export default function AboutSection() {
   return (
-    <StackPanel
-      {...props}
-      innerClassName="rounded-[2.5rem] bg-white border border-ink/5 shadow-2xl shadow-ink/10 overflow-hidden"
-    >
-      <section id="about" data-testid="about-section" className="py-20 md:py-28 relative">
-        <span
-          aria-hidden
-          className="pointer-events-none select-none absolute top-10 right-4 md:right-10 font-display font-bold text-[10rem] md:text-[14rem] leading-none text-stroke-ink opacity-30 hidden md:block"
-        >
-          WHY
-        </span>
-        <div className="mx-auto max-w-7xl px-6 md:px-10 relative">
+    <section id="about" data-testid="about-section" className="py-20 md:py-28 relative bg-white">
+      <span
+        aria-hidden
+        className="pointer-events-none select-none absolute top-10 right-4 md:right-10 font-display font-bold text-[10rem] md:text-[14rem] leading-none text-stroke-ink opacity-30 hidden md:block"
+      >
+        WHY
+      </span>
+      <div className="mx-auto max-w-7xl px-6 md:px-10 relative">
           <Reveal>
             <Kicker>About KNDP</Kicker>
             <h2
@@ -172,6 +190,53 @@ export default function AboutSection(props) {
             </div>
           </div>
 
+          <div className="mt-24 md:mt-32" data-testid="who-for-section">
+            <Reveal>
+              <Kicker>Who is KNDP for?</Kicker>
+              <h3
+                data-testid="who-for-headline"
+                className="mt-5 font-display text-3xl md:text-5xl font-medium tracking-tight"
+              >
+                <WordMask text="If you have a problem," className="block" />
+                <WordMask
+                  text="we have a solution."
+                  accent={["solution."]}
+                  delay={0.2}
+                  className="block"
+                />
+              </h3>
+            </Reveal>
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {businessTypes.map((t, i) => (
+                <Reveal key={t.label} delay={0.05 * i}>
+                  <div
+                    data-testid={`who-for-card-${i}`}
+                    className="group h-full rounded-2xl bg-mist border border-ink/8 p-6 flex items-center gap-4 transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-baby/20 hover:border-baby-dark/50"
+                  >
+                    <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-baby-light text-baby-dark transition-[background-color,color,transform] duration-500 group-hover:bg-baby group-hover:text-ink group-hover:-rotate-12">
+                      <t.icon className="h-5 w-5" />
+                    </span>
+                    <p className="font-display font-medium tracking-tight text-lg">{t.label}</p>
+                  </div>
+                </Reveal>
+              ))}
+              <Reveal delay={0.35} className="sm:col-span-2 lg:col-span-4">
+                <div
+                  data-testid="who-for-highlight-card"
+                  className="group h-full rounded-2xl bg-ink text-white p-6 md:p-8 flex items-center gap-5 transition-transform duration-500 hover:-translate-y-1.5"
+                >
+                  <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-baby text-ink transition-transform duration-500 group-hover:-rotate-12">
+                    <Sparkles className="h-5 w-5" />
+                  </span>
+                  <p className="font-display font-medium tracking-tight text-lg md:text-xl">
+                    Any business with a problem to solve —{" "}
+                    <span className="text-baby">if you have a problem, we have a solution.</span>
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+
           <div className="mt-24 md:mt-32" data-testid="about-values-section">
             <Reveal>
               <Kicker>How we work</Kicker>
@@ -209,7 +274,6 @@ export default function AboutSection(props) {
             </Reveal>
           </div>
         </div>
-      </section>
-    </StackPanel>
+    </section>
   );
 }

@@ -1,6 +1,16 @@
-import { ArrowUpRight, Globe, Wrench, Workflow, Smartphone } from "lucide-react";
+import {
+  ArrowUpRight,
+  Globe,
+  Wrench,
+  Workflow,
+  Smartphone,
+  UtensilsCrossed,
+  Boxes,
+  Users,
+  ShoppingBag,
+  Zap,
+} from "lucide-react";
 import { Reveal, Kicker, WordMask, Magnetic } from "@/components/Reveal";
-import { StackPanel } from "@/components/StackSection";
 import { scrollToId } from "@/lib/scroll";
 
 const offerings = [
@@ -73,14 +83,19 @@ const services = [
   },
 ];
 
-export default function ServicesSection(props) {
+const ideas = [
+  { icon: UtensilsCrossed, text: "A booking system for your restaurant" },
+  { icon: Boxes, text: "An inventory tool for your warehouse" },
+  { icon: Users, text: "A custom CRM for your sales team" },
+  { icon: ShoppingBag, text: "An e-commerce store for your products" },
+  { icon: Smartphone, text: "A mobile app for your customers" },
+  { icon: Zap, text: "An automation that saves you hours every week" },
+];
+
+export default function ServicesSection() {
   return (
-    <StackPanel
-      {...props}
-      innerClassName="rounded-[2.5rem] bg-white border border-ink/5 shadow-2xl shadow-ink/10 overflow-hidden"
-    >
-      <section id="services" data-testid="services-section" className="py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
+    <section id="services" data-testid="services-section" className="py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
           <Reveal>
             <Kicker>Services</Kicker>
             <h2
@@ -111,7 +126,30 @@ export default function ServicesSection(props) {
             ))}
           </div>
 
-          <Reveal className="mt-24 md:mt-32">
+          <Reveal className="mt-20 md:mt-24">
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold text-ink/50">
+              A few examples
+            </p>
+          </Reveal>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" data-testid="ideas-grid">
+            {ideas.map((idea, i) => (
+              <Reveal key={idea.text} delay={0.05 * i}>
+                <div
+                  data-testid={`idea-card-${i}`}
+                  className="group h-full rounded-2xl border border-ink/8 bg-white p-6 flex items-center gap-4 transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-baby/15 hover:border-baby/50"
+                >
+                  <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-baby-light text-baby-dark transition-[background-color,color,transform] duration-500 group-hover:bg-baby group-hover:text-ink group-hover:-rotate-12">
+                    <idea.icon className="h-5 w-5" />
+                  </span>
+                  <p className="font-display text-base md:text-lg font-medium tracking-tight leading-snug">
+                    {idea.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-20 md:mt-24">
             <p className="text-xs uppercase tracking-[0.25em] font-semibold text-ink/50">
               The full list — eight ways we help
             </p>
@@ -167,7 +205,6 @@ export default function ServicesSection(props) {
             </div>
           </Reveal>
         </div>
-      </section>
-    </StackPanel>
+    </section>
   );
 }

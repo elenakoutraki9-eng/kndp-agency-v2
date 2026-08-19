@@ -3,7 +3,6 @@ import axios from "axios";
 import { toast } from "sonner";
 import { ArrowUpRight, Mail, CalendarClock, Send, Check } from "lucide-react";
 import { WordMask, Reveal, Kicker, Magnetic } from "@/components/Reveal";
-import { StackPanel } from "@/components/StackSection";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -45,13 +44,13 @@ export default function ContactSection(props) {
   };
 
   return (
-    <StackPanel
-      {...props}
-      innerClassName="rounded-[2.5rem] bg-baby shadow-2xl shadow-ink/10 overflow-hidden grain relative"
+    <section
+      id="contact"
+      data-testid="contact-section"
+      className="py-20 md:py-28 relative bg-baby rounded-t-[2.5rem] overflow-hidden grain"
     >
       <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/30 blur-3xl pointer-events-none" />
-      <section id="contact" data-testid="contact-section" className="py-20 md:py-28 relative">
-        <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10">
+      <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 relative">
           <div className="lg:col-span-5">
             <Kicker className="text-ink/70">Contact</Kicker>
             <h2
@@ -220,8 +219,7 @@ export default function ContactSection(props) {
               </form>
             </Reveal>
           </div>
-        </div>
-      </section>
-    </StackPanel>
+      </div>
+    </section>
   );
 }
