@@ -42,7 +42,7 @@ export default function Hero(props) {
       data-testid="hero-section"
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className="relative min-h-[100svh] flex items-center pt-28 pb-16 overflow-hidden"
+      className="relative min-h-[100svh] flex items-center pt-24 pb-10 overflow-hidden"
     >
       <HeroBackground mx={mx} my={my} />
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-8 items-center">
@@ -56,7 +56,7 @@ export default function Hero(props) {
           </motion.div>
           <h1
             data-testid="hero-headline"
-            className="mt-6 font-display font-bold tracking-tighter leading-[0.95] text-5xl sm:text-6xl lg:text-7xl"
+            className="mt-5 font-display font-bold tracking-tighter leading-[0.95] text-5xl sm:text-6xl lg:text-6xl"
           >
             <WordMask text="We Build" delay={0.2} className="block" />
             <WordMask text="Whatever" accent={["Whatever"]} delay={0.4} className="block" />
@@ -67,7 +67,7 @@ export default function Hero(props) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="mt-8 max-w-xl text-base md:text-lg leading-relaxed text-ink/60"
+            className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-ink/60"
           >
             From websites and apps to custom tools and automations, we build the
             digital solutions your business needs to grow.
@@ -76,7 +76,7 @@ export default function Hero(props) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.05 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-8 flex flex-wrap items-center gap-4"
           >
             <Magnetic strength={0.25}>
               <button
@@ -103,7 +103,7 @@ export default function Hero(props) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.15 }}
             data-testid="hero-promise-row"
-            className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-ink/55"
+            className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-ink/55"
           >
             {promises.map((p) => (
               <span key={p} className="inline-flex items-center gap-2">
@@ -116,7 +116,7 @@ export default function Hero(props) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.25 }}
-            className="mt-12 flex flex-wrap gap-x-12 gap-y-6 border-t border-ink/10 pt-8"
+            className="mt-8 flex flex-wrap gap-x-12 gap-y-4 border-t border-ink/10 pt-6"
           >
             {stats.map((s) => (
               <div
@@ -126,7 +126,7 @@ export default function Hero(props) {
                 <Counter
                   to={s.to}
                   suffix={s.suffix}
-                  className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-ink"
+                  className="font-display text-2xl md:text-3xl font-bold tracking-tighter text-ink"
                 />
                 <p className="mt-1 text-xs uppercase tracking-[0.2em] font-semibold text-ink/45">
                   {s.label}
@@ -136,8 +136,11 @@ export default function Hero(props) {
           </motion.div>
         </div>
 
-        <div className="lg:col-span-5 relative">
-          <motion.div style={{ x: imgMX, y: imgMY }}>
+        <div className="lg:col-span-5 relative -top-4 md:-top-6 lg:-top-8">
+          <motion.div
+            style={{ x: imgMX, y: imgMY }}
+            className="[zoom:0.82] sm:[zoom:0.78] lg:[zoom:0.7] origin-top"
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}

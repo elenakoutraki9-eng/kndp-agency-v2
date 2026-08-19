@@ -37,6 +37,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 
 - 2026-07: Portfolio carousel (ProjectCarousel.jsx) — removed the 3D stacked/coverflow depth effect (no more faded/scaled/rotated side cards); now a single-card-at-a-time slide carousel with the same arrow buttons, dot indicators, swipe/drag, and wrap-around.
 
+
+- 2026-07: Made Services and Contact sections more compact — reduced section/card padding, spacing, icon/text sizes across offering cards, idea cards and the 8-row service list; Contact form narrowed to max-w-md with smaller inputs/chips/textarea (3 rows) so more content fits without scrolling.
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).
