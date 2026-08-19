@@ -1,128 +1,92 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Search, Bell, TrendingUp } from "lucide-react";
+import {
+  Globe,
+  LayoutDashboard,
+  Smartphone,
+  AppWindow,
+  CalendarClock,
+  Wrench,
+  Zap,
+  Lightbulb,
+  ChevronRight,
+  ChevronLeft,
+} from "lucide-react";
 
-const SCREENS = [
-  { id: "website", label: "Ιστότοπος" },
-  { id: "app", label: "Εφαρμογή" },
-  { id: "dashboard", label: "Εργαλείο Web" },
+const SERVICES = [
+  { icon: Globe, title: "Ιστοσελίδες", desc: "Ένας ιστότοπος που φέρνει πελάτες." },
+  { icon: LayoutDashboard, title: "Εργαλεία Web", desc: "Δες τα νούμερά σου σε ένα μέρος." },
+  { icon: Smartphone, title: "Εφαρμογές", desc: "Οι πελάτες σου, πάντα ένα tap μακριά." },
+  { icon: AppWindow, title: "Εφαρμογές Web", desc: "Κρατήσεις και πληρωμές, αυτόματα." },
+  { icon: CalendarClock, title: "Προγράμματα", desc: "Απόθεμα και πρόγραμμα χωρίς λάθη." },
+  { icon: Wrench, title: "Έξυπνα Εργαλεία", desc: "Φτιαγμένο για τον τρόπο που δουλεύεις." },
+  { icon: Zap, title: "Αυτοματισμοί", desc: "Τα συστήματά σου μιλάνε μεταξύ τους." },
+  { icon: Lightbulb, title: "Έξυπνες Ψηφιακές Λύσεις", desc: "Οποιοδήποτε πρόβλημα, λύση στα μέτρα σου." },
 ];
 
-const HOLD_MS = 2600;
+const BROWSE_MS = 900;
+const TAP_MS = 280;
+const DETAIL_MS = 2300;
+const BACK_MS = 450;
 
-const WebsiteScreen = () => (
-  <div className="absolute inset-0 flex flex-col">
-    <div className="flex items-center justify-between px-4 pt-5">
-      <span className="h-2 w-14 rounded-full bg-ink/20" />
-      <span className="flex gap-1.5">
-        <span className="h-1.5 w-1.5 rounded-full bg-ink/15" />
-        <span className="h-1.5 w-1.5 rounded-full bg-ink/15" />
-        <span className="h-1.5 w-1.5 rounded-full bg-ink/15" />
-      </span>
-    </div>
-    <div className="mt-6 px-4">
-      <div className="h-3 w-3/4 rounded-full bg-ink/25" />
-      <div className="mt-2 h-3 w-1/2 rounded-full bg-baby-dark/60" />
-      <div className="mt-3 h-1.5 w-4/5 rounded-full bg-ink/10" />
-      <div className="mt-1.5 h-1.5 w-3/5 rounded-full bg-ink/10" />
-      <span className="mt-4 inline-flex rounded-full bg-baby px-4 py-1.5 text-[9px] font-extrabold text-ink">
-        Ξεκίνα Τώρα
-      </span>
-    </div>
-    <div className="mt-auto mb-5 mx-4 rounded-xl bg-mist h-16" />
-  </div>
-);
-
-const AppScreen = () => (
-  <div className="absolute inset-0 flex flex-col pt-5 px-4">
-    <div className="flex items-center justify-between">
-      <span className="h-2.5 w-10 rounded-full bg-ink/20" />
-      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-mist">
-        <Bell className="h-3 w-3 text-ink/40" />
-      </span>
-    </div>
-    <div className="mt-4 flex items-center gap-2 rounded-full bg-mist px-3 py-2">
-      <Search className="h-3 w-3 text-ink/30" />
-      <span className="h-1.5 w-16 rounded-full bg-ink/10" />
-    </div>
-    <div className="mt-4 space-y-2">
-      {[0, 1, 2].map((i) => (
-        <div key={i} className="flex items-center gap-2 rounded-xl bg-mist px-2.5 py-2">
-          <span className="h-8 w-8 rounded-lg bg-baby shrink-0" />
-          <div className="flex-1 space-y-1">
-            <span className="block h-1.5 w-3/4 rounded-full bg-ink/15" />
-            <span className="block h-1.5 w-1/2 rounded-full bg-ink/8" />
-          </div>
-        </div>
-      ))}
-    </div>
-    <div className="mt-auto mb-4 flex items-center justify-around rounded-2xl bg-ink py-2.5">
-      {[0, 1, 2, 3].map((i) => (
-        <span
-          key={i}
-          className={`h-1.5 w-1.5 rounded-full ${i === 0 ? "bg-baby" : "bg-white/25"}`}
-        />
-      ))}
-    </div>
-  </div>
-);
-
-const DashboardScreen = () => (
-  <div className="absolute inset-0 flex flex-col pt-5 px-4">
-    <div className="flex items-center justify-between">
-      <span className="h-2.5 w-16 rounded-full bg-ink/20" />
-      <span className="inline-flex items-center gap-1 rounded-full bg-baby-light px-2 py-1 text-[8px] font-bold text-baby-dark">
-        <TrendingUp className="h-2.5 w-2.5" />
-        +18%
-      </span>
-    </div>
-    <div className="mt-4 grid grid-cols-2 gap-2">
-      <div className="rounded-lg bg-mist p-2.5">
-        <span className="block h-1.5 w-8 rounded-full bg-ink/15" />
-        <span className="mt-1.5 block h-2.5 w-10 rounded-full bg-ink/30" />
-      </div>
-      <div className="rounded-lg bg-baby-light p-2.5">
-        <span className="block h-1.5 w-8 rounded-full bg-baby-dark/40" />
-        <span className="mt-1.5 block h-2.5 w-10 rounded-full bg-baby-dark" />
-      </div>
-    </div>
-    <div className="mt-3 flex-1 rounded-xl bg-mist p-3 flex items-end gap-1.5">
-      {[40, 65, 30, 80, 55, 70, 45].map((h, i) => (
-        <span
-          key={i}
-          style={{ height: `${h}%` }}
-          className="flex-1 rounded-t-sm bg-baby-dark/70"
-        />
-      ))}
-    </div>
-    <div className="mb-4 mt-3 space-y-1.5">
-      <div className="flex items-center justify-between rounded-md bg-mist px-2 py-1.5">
-        <span className="h-1.5 w-10 rounded-full bg-ink/15" />
-        <span className="h-1.5 w-6 rounded-full bg-baby-dark/50" />
-      </div>
-      <div className="flex items-center justify-between rounded-md bg-mist px-2 py-1.5">
-        <span className="h-1.5 w-10 rounded-full bg-ink/15" />
-        <span className="h-1.5 w-6 rounded-full bg-baby-dark/50" />
-      </div>
-    </div>
-  </div>
-);
-
-const renderScreen = (id) => {
-  if (id === "website") return <WebsiteScreen />;
-  if (id === "app") return <AppScreen />;
-  return <DashboardScreen />;
+const menuVariants = {
+  initial: { x: -24, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: -24, opacity: 0 },
+};
+const detailVariants = {
+  initial: { x: 24, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: 24, opacity: 0 },
 };
 
 export default function ServicesPhoneMockup() {
-  const [step, setStep] = useState(0);
+  const [screen, setScreen] = useState("menu");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [tapped, setTapped] = useState(false);
+  const indexRef = useRef(0);
 
   useEffect(() => {
-    const id = setTimeout(() => setStep((s) => (s + 1) % SCREENS.length), HOLD_MS);
-    return () => clearTimeout(id);
-  }, [step]);
+    let mounted = true;
+    const timers = [];
+    const wait = (ms) =>
+      new Promise((resolve) => {
+        const t = setTimeout(resolve, ms);
+        timers.push(t);
+      });
 
-  const current = SCREENS[step];
+    async function loop() {
+      while (mounted) {
+        setScreen("menu");
+        setTapped(false);
+        await wait(BROWSE_MS);
+        if (!mounted) break;
+
+        setTapped(true);
+        await wait(TAP_MS);
+        if (!mounted) break;
+
+        setTapped(false);
+        setScreen("detail");
+        await wait(DETAIL_MS);
+        if (!mounted) break;
+
+        setScreen("menu");
+        await wait(BACK_MS);
+        if (!mounted) break;
+
+        indexRef.current = (indexRef.current + 1) % SERVICES.length;
+        setActiveIndex(indexRef.current);
+      }
+    }
+    loop();
+    return () => {
+      mounted = false;
+      timers.forEach(clearTimeout);
+    };
+  }, []);
+
+  const active = SERVICES[activeIndex];
 
   return (
     <div data-testid="services-phone-mockup" className="w-[220px] mx-auto">
@@ -130,34 +94,89 @@ export default function ServicesPhoneMockup() {
         <div className="relative rounded-[1.9rem] bg-white overflow-hidden h-[420px]">
           <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-4 w-16 rounded-full bg-ink z-20" />
           <AnimatePresence mode="wait">
-            <motion.div
-              key={current.id}
-              data-testid={`services-phone-screen-${current.id}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-0"
-            >
-              {renderScreen(current.id)}
-            </motion.div>
+            {screen === "menu" ? (
+              <motion.div
+                key="menu"
+                data-testid="services-phone-screen-menu"
+                variants={menuVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 flex flex-col pt-8 px-3.5"
+              >
+                <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-ink/40 px-1">
+                  Υπηρεσίες
+                </p>
+                <div className="mt-2 flex-1 flex flex-col gap-1">
+                  {SERVICES.map((s, i) => {
+                    const isHot = tapped && i === activeIndex;
+                    return (
+                      <div
+                        key={s.title}
+                        data-testid={`services-phone-menu-item-${i}`}
+                        className={`flex items-center gap-2 rounded-lg px-2 py-1.5 transition-[background-color,transform] duration-200 ${
+                          isHot ? "bg-baby-light scale-[0.97]" : "bg-transparent scale-100"
+                        }`}
+                      >
+                        <span
+                          className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md transition-colors duration-200 ${
+                            isHot ? "bg-baby text-ink" : "bg-mist text-ink/50"
+                          }`}
+                        >
+                          <s.icon className="h-3 w-3" />
+                        </span>
+                        <span className="flex-1 text-[10px] font-semibold text-ink/80 leading-none truncate">
+                          {s.title}
+                        </span>
+                        <ChevronRight className="h-3 w-3 text-ink/20 shrink-0" />
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="detail"
+                data-testid="services-phone-screen-detail"
+                variants={detailVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 flex flex-col pt-8 px-4"
+              >
+                <div className="flex items-center gap-1.5 text-ink/40">
+                  <ChevronLeft className="h-3.5 w-3.5" />
+                  <span className="text-[9px] uppercase tracking-[0.2em] font-bold">
+                    Υπηρεσίες
+                  </span>
+                </div>
+                <div className="mt-7 flex flex-col items-start">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-baby-light text-baby-dark">
+                    <active.icon className="h-6 w-6" />
+                  </span>
+                  <h4
+                    data-testid="services-phone-detail-title"
+                    className="mt-4 font-display text-base font-semibold tracking-tight text-ink"
+                  >
+                    {active.title}
+                  </h4>
+                  <p
+                    data-testid="services-phone-detail-desc"
+                    className="mt-2 text-[11px] leading-relaxed text-ink/55"
+                  >
+                    {active.desc}
+                  </p>
+                </div>
+                <div className="mt-auto mb-5 h-9 w-full rounded-full bg-baby/80" />
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
       </div>
-      <div className="mt-4 flex items-center justify-center gap-2">
-        {SCREENS.map((s) => (
-          <span
-            key={s.id}
-            data-testid={`services-phone-dot-${s.id}`}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              s.id === current.id ? "w-6 bg-baby-dark" : "w-1.5 bg-ink/15"
-            }`}
-          />
-        ))}
-      </div>
-      <p className="mt-2 text-center text-xs font-semibold text-ink/50 flex items-center justify-center gap-1">
-        {current.label}
-        <ArrowUpRight className="h-3 w-3" />
+      <p className="mt-4 text-center text-xs font-semibold text-ink/50">
+        Όλες οι υπηρεσίες μας, σε μία οθόνη
       </p>
     </div>
   );

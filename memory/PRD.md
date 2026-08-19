@@ -71,7 +71,15 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 - P2: Real portfolio case studies once projects exist.
 - P2: Blog/insights section, SEO metadata expansion.
 
+- 2026-08: Full Greek translation of entire site (Navbar, Hero, ChatPhone, Problem/Solution, Services, ServicesPhoneMockup, HowItWorks, Portfolio, Contact, FAQ, Footer, Marquee) + Manrope font for Greek glyph support. Verified via testing_agent: 100% pass, no layout/overflow issues, contact form persists correctly.
+- 2026-08: Enlarged Hero phone mockup (~15% bigger via zoom scale bump).
+- 2026-08: Replaced ServicesPhoneMockup content — now an animated app screen cycling through all 8 services: a menu list (icon + title per service) with a looping tap animation that slides into a one-line detail screen per service, then slides back and advances to the next service continuously. Same phone size/position, white/baby-blue palette.
+
+## Known pre-existing (non-blocking) issue
+- Contact form sends `services` (array) but backend model expects singular `service` — selected chip not persisted (name/email/message still save fine).
+
 ## Next Tasks
-1. Add lightweight admin login to view enquiries in-browser.
-2. Wire Resend email notifications for new contact messages.
-3. Swap booking placeholder for real scheduling link.
+1. Fix service field mismatch (services array vs singular service) in ContactSection/backend model.
+2. Add lightweight admin login to view enquiries in-browser.
+3. Wire Resend email notifications for new contact messages.
+4. Swap booking placeholder for real scheduling link.
