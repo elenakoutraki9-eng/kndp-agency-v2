@@ -6,7 +6,6 @@ const nav = [
   { id: "#hero", label: "Home" },
   { id: "#services", label: "Services" },
   { id: "#portfolio", label: "Portfolio" },
-  { id: "#about", label: "About" },
   { id: "#contact", label: "Contact" },
 ];
 

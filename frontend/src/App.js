@@ -12,7 +12,6 @@ import ProblemSolutionSection from "@/sections/ProblemSolutionSection";
 import ServicesSection from "@/sections/ServicesSection";
 import HowItWorksSection from "@/sections/HowItWorksSection";
 import PortfolioSection from "@/sections/PortfolioSection";
-import AboutSection from "@/sections/AboutSection";
 import TestimonialsSection from "@/sections/TestimonialsSection";
 import FaqSection from "@/sections/FaqSection";
 import ContactSection from "@/sections/ContactSection";
@@ -50,7 +49,6 @@ function App() {
           <HowItWorksSection />
           <PortfolioSection />
         </StackedPanels>
-        <AboutSection />
         <TestimonialsSection />
         <FaqSection />
         <ContactSection />

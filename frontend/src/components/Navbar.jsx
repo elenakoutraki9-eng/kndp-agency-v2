@@ -7,7 +7,6 @@ const links = [
   { id: "#hero", label: "Home", testid: "nav-link-home" },
   { id: "#services", label: "Services", testid: "nav-link-services" },
   { id: "#portfolio", label: "Portfolio", testid: "nav-link-portfolio" },
-  { id: "#about", label: "About", testid: "nav-link-about" },
   { id: "#contact", label: "Contact", testid: "nav-link-contact" },
 ];
 

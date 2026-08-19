@@ -30,6 +30,7 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 - No "AI" mentioned anywhere on the site.
 
 - 2026-08-19: Restructured scroll — sticky/stacked transitions now only on Hero→Problem→Solution and How It Works→Portfolio pairs; all other sections use natural scroll with entrance animations. Removed standalone "What We Can Build" (merged as "A few examples" into Services) and "Who Is KNDP For?" (merged into About).
+- 2026-08-19: Removed the About section entirely (incl. founder story, Why KNDP, values, Who Is KNDP For grid) and the About link from navbar + footer. Flow: Hero → Problem→Solution → Services → How It Works → Portfolio → Testimonials → FAQ → Contact.
 
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
