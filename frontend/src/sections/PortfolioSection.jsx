@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { WordMask, Reveal, Kicker, Magnetic } from "@/components/Reveal";
 import { StackPanel } from "@/components/StackSection";
 import { scrollToId } from "@/lib/scroll";
+import ProjectCarousel from "@/components/ProjectCarousel";
 
 const projects = [
   {
@@ -71,44 +72,9 @@ export default function PortfolioSection(props) {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="portfolio-placeholders">
-            {projects.map((p, i) => (
-              <Reveal key={p.title} delay={0.07 * i}>
-                <div
-                  data-testid={`portfolio-card-${i}`}
-                  className="group h-full rounded-3xl border border-ink/8 bg-white overflow-hidden transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-baby/20 hover:border-baby/50"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={p.img}
-                      alt={p.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/25 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/85 backdrop-blur px-3.5 py-1.5 text-xs font-bold text-ink/70">
-                      <span className="h-1.5 w-1.5 rounded-full bg-baby-dark animate-pulse" />
-                      In progress
-                    </span>
-                    <span className="absolute top-4 right-4 inline-flex rounded-full bg-ink/70 backdrop-blur px-3.5 py-1.5 text-xs font-bold text-white">
-                      {p.tag}
-                    </span>
-                  </div>
-                  <div className="p-7 flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="font-display text-xl md:text-2xl font-medium tracking-tight transition-colors duration-300 group-hover:text-baby-dark">
-                        {p.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-ink/60">{p.desc}</p>
-                    </div>
-                    <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ink/10 transition-[background-color,transform] duration-500 group-hover:bg-baby group-hover:rotate-45">
-                      <ArrowUpRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <ProjectCarousel projects={projects} />
+          </Reveal>
 
           <Reveal className="mt-16 md:mt-20">
             <div className="relative overflow-hidden rounded-[2.5rem] bg-ink text-white px-8 md:px-14 py-14 md:py-16 grain text-center">

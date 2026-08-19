@@ -34,6 +34,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 - 2026-08-19: Replaced hero photo with animated phone mockup (ChatPhone component) — looping chat conversation (customer left/grey, KNDP right/baby blue) with typing indicators and a mini booking-app preview card with check animation; ~10s loop.
 
 
+
+- 2026-07: Replaced Portfolio's 6-card grid with a 3D coverflow carousel (ProjectCarousel.jsx) — center card large/opaque, side cards smaller/faded with rotateY depth, prev/next arrow buttons, clickable dot indicators, swipe/drag support (framer-motion), wraps at both ends.
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).
