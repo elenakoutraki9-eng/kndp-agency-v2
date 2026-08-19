@@ -1,19 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
-import { Kicker, WordMask, Counter, Magnetic } from "@/components/Reveal";
+import { Kicker, WordMask, Magnetic } from "@/components/Reveal";
 import HeroBackground, { useMouseParallax } from "@/components/HeroBackground";
 import ChatPhone from "@/components/ChatPhone";
 import { StackPanel } from "@/components/StackSection";
 import { scrollToId } from "@/lib/scroll";
 
 const rotatingWords = ["Websites", "Web Apps", "Custom Tools", "Automations"];
-
-const stats = [
-  { to: 6, suffix: "", label: "Projects on the bench" },
-  { to: 2, suffix: "h", label: "Response time promise" },
-  { to: 4, suffix: "w", label: "Typical website delivery" },
-];
 
 export default function Hero(props) {
   const heroRef = useRef(null);
@@ -95,28 +89,6 @@ export default function Hero(props) {
                 See What We Build
               </button>
             </Magnetic>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.15 }}
-            className="mt-5 flex flex-wrap gap-x-12 gap-y-4 border-t border-ink/10 pt-6"
-          >
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                data-testid={`hero-stat-${s.label.toLowerCase().replace(/\s+/g, "-")}`}
-              >
-                <Counter
-                  to={s.to}
-                  suffix={s.suffix}
-                  className="font-display text-2xl md:text-3xl font-bold tracking-tighter text-ink"
-                />
-                <p className="mt-1 text-xs uppercase tracking-[0.2em] font-semibold text-ink/45">
-                  {s.label}
-                </p>
-              </div>
-            ))}
           </motion.div>
         </div>
 

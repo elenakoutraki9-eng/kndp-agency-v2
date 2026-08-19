@@ -43,6 +43,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 
 - 2026-07: Visual-editor edits — removed Hero promise-row checkmarks; increased WordMask reveal padding to prevent descender/ascender clipping on headlines site-wide; made How It Works section more compact (padding/card sizes reduced); Portfolio carousel now shows a partial peek of prev/next cards (faded, no rotation) alongside the active center card.
 
+
+- 2026-07: Removed the Hero stats row (Projects on the bench / Response time promise / Typical website delivery counters).
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).
