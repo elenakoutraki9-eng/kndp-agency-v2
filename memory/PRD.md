@@ -52,6 +52,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 
 - 2026-07: Removed the Testimonials section entirely (deleted TestimonialsSection.jsx, removed from App.js). Page now flows Portfolio -> FAQ -> Contact.
 
+
+- 2026-07: Made "Problems We Solve" section more compact (py-20/28 -> py-12/16, headline text-4xl/6xl -> text-3xl/5xl, row spacing/padding/icon sizes reduced).
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).
