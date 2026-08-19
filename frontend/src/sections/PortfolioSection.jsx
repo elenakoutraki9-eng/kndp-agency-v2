@@ -122,7 +122,7 @@ export default function PortfolioSection(props) {
                   data-testid="portfolio-cta-button"
                   className="btn-shine group mt-9 inline-flex items-center gap-2 rounded-full bg-baby px-8 py-4 text-sm font-bold text-ink transition-transform duration-300 hover:scale-105"
                 >
-                  Start a Project
+                  Get a Free Estimate
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
                 </button>
               </Magnetic>

@@ -63,8 +63,8 @@ export default function ContactSection(props) {
             </h2>
             <Reveal delay={0.3}>
               <p className="mt-7 max-w-md text-base md:text-lg leading-relaxed text-ink/70">
-                Tell us what you're trying to build or fix. We reply to every
-                message — usually within one business day.
+                Tell us what you're trying to build or fix. Free estimate, no
+                obligation — we reply within 2 hours on business days.
               </p>
             </Reveal>
 
@@ -210,6 +210,13 @@ export default function ContactSection(props) {
                     <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </button>
                 </Magnetic>
+                <p
+                  data-testid="contact-promise-line"
+                  className="mt-5 flex items-center gap-2 text-sm font-semibold text-ink/55"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-baby-dark" />
+                  Free, no-obligation estimate — we reply within 2 hours on business days.
+                </p>
               </form>
             </Reveal>
           </div>

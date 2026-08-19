@@ -202,7 +202,7 @@ export default function AboutSection(props) {
                   data-testid="about-cta-button"
                   className="btn-shine group inline-flex items-center gap-2 rounded-full bg-ink px-8 py-4 text-sm font-bold text-white transition-transform duration-300 hover:scale-105"
                 >
-                  Work With Us
+                  Get a Free Estimate
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
                 </button>
               </Magnetic>

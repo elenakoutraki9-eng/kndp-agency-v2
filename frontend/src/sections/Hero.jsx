@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { ArrowUpRight, ArrowDown, Check } from "lucide-react";
 import { Kicker, WordMask, Counter, Magnetic } from "@/components/Reveal";
 import HeroBackground, { useMouseParallax } from "@/components/HeroBackground";
 import { scrollToId } from "@/lib/scroll";
@@ -10,10 +10,12 @@ const HERO_IMG = "https://images.pexels.com/photos/31068011/pexels-photo-3106801
 const rotatingWords = ["Websites", "Web Apps", "Custom Tools", "Automations"];
 
 const stats = [
-  { to: 8, suffix: "+", label: "Solution types we build" },
-  { to: 1, suffix: "", label: "Partner, end to end" },
-  { to: 24, suffix: "h", label: "Average first reply" },
+  { to: 6, suffix: "", label: "Projects on the bench" },
+  { to: 2, suffix: "h", label: "Response time promise" },
+  { to: 4, suffix: "w", label: "Typical website delivery" },
 ];
+
+const promises = ["Free estimate", "Reply within 2 hours", "You own everything"];
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -81,7 +83,7 @@ export default function Hero() {
                 data-testid="hero-cta-primary"
                 className="btn-shine group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-bold text-white transition-[transform,background-color] duration-300 hover:scale-105 hover:bg-baby-dark hover:text-ink"
               >
-                Start a Project
+                Get a Free Estimate
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
               </button>
             </Magnetic>
@@ -98,8 +100,22 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="mt-14 flex flex-wrap gap-x-12 gap-y-6 border-t border-ink/10 pt-8"
+            transition={{ duration: 0.8, delay: 1.15 }}
+            data-testid="hero-promise-row"
+            className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-ink/55"
+          >
+            {promises.map((p) => (
+              <span key={p} className="inline-flex items-center gap-2">
+                <Check className="h-4 w-4 text-baby-dark" />
+                {p}
+              </span>
+            ))}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.25 }}
+            className="mt-12 flex flex-wrap gap-x-12 gap-y-6 border-t border-ink/10 pt-8"
           >
             {stats.map((s) => (
               <div

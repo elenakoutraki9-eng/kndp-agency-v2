@@ -78,7 +78,7 @@ export default function Navbar() {
             data-testid="nav-cta-button"
             className="btn-shine hidden md:inline-flex items-center gap-1.5 rounded-full bg-baby px-5 py-2.5 text-sm font-bold text-ink transition-[transform,background-color] duration-300 hover:scale-105 hover:bg-baby-dark"
           >
-            Start a Project
+            Get a Free Estimate
             <ArrowUpRight className="h-4 w-4" />
           </button>
           <button
@@ -126,7 +126,7 @@ export default function Navbar() {
                 data-testid="mobile-nav-cta-button"
                 className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-baby px-6 py-3.5 font-bold text-ink"
               >
-                Start a Project
+                Get a Free Estimate
                 <ArrowUpRight className="h-4 w-4" />
               </button>
             </div>

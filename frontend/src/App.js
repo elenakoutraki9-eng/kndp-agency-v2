@@ -11,6 +11,7 @@ import Hero from "@/sections/Hero";
 import ServicesSection from "@/sections/ServicesSection";
 import PortfolioSection from "@/sections/PortfolioSection";
 import AboutSection from "@/sections/AboutSection";
+import FaqSection from "@/sections/FaqSection";
 import ContactSection from "@/sections/ContactSection";
 import { setLenis } from "@/lib/scroll";
 
@@ -42,6 +43,7 @@ function App() {
           <ServicesSection />
           <PortfolioSection />
           <AboutSection />
+          <FaqSection />
           <ContactSection />
         </StackedPanels>
       </main>
