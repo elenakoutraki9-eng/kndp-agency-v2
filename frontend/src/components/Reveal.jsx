@@ -1,4 +1,13 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+  animate,
+} from "framer-motion";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -15,11 +24,38 @@ export const MaskLine = ({ children, delay = 0, className = "" }) => (
   </span>
 );
 
-export const Reveal = ({ children, delay = 0, y = 28, className = "" }) => (
+export const WordMask = ({ text, accent = [], delay = 0, stagger = 0.07, className = "" }) => {
+  const words = text.split(" ");
+  return (
+    <span className={className}>
+      {words.map((w, i) => (
+        <span
+          key={`${w}-${i}`}
+          className="inline-block overflow-hidden align-bottom pb-[0.12em] -mb-[0.12em]"
+        >
+          <motion.span
+            className={`inline-block will-change-transform ${
+              accent.includes(w) ? "text-baby-dark italic" : ""
+            }`}
+            initial={{ y: "115%", rotate: 3 }}
+            whileInView={{ y: 0, rotate: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.75, delay: delay + i * stagger, ease: EASE }}
+          >
+            {w}
+            {i < words.length - 1 ? "\u00A0" : ""}
+          </motion.span>
+        </span>
+      ))}
+    </span>
+  );
+};
+
+export const Reveal = ({ children, delay = 0, y = 28, x = 0, scale = 1, className = "" }) => (
   <motion.div
     className={className}
-    initial={{ opacity: 0, y }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y, x, scale }}
+    whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
     viewport={{ once: true, margin: "-80px" }}
     transition={{ duration: 0.8, delay, ease: EASE }}
   >
@@ -27,11 +63,79 @@ export const Reveal = ({ children, delay = 0, y = 28, className = "" }) => (
   </motion.div>
 );
 
+export const ParallaxY = ({ children, distance = 40, className = "" }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [distance, -distance]);
+  return (
+    <motion.div ref={ref} style={{ y }} className={className}>
+      {children}
+    </motion.div>
+  );
+};
+
+export const Counter = ({ to, suffix = "", className = "" }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const mv = useMotionValue(0);
+  const rounded = useTransform(mv, (v) => Math.round(v));
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(mv, to, { duration: 1.8, ease: [0.16, 1, 0.3, 1] });
+    return () => controls.stop();
+  }, [inView, to, mv]);
+
+  return (
+    <span ref={ref} className={className}>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
+  );
+};
+
+export const Magnetic = ({ children, strength = 0.3, className = "" }) => {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 200, damping: 16, mass: 0.2 });
+  const sy = useSpring(y, { stiffness: 200, damping: 16, mass: 0.2 });
+
+  const onMove = (e) => {
+    const r = ref.current.getBoundingClientRect();
+    x.set((e.clientX - (r.left + r.width / 2)) * strength);
+    y.set((e.clientY - (r.top + r.height / 2)) * strength);
+  };
+  const onLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      style={{ x: sx, y: sy }}
+      className={`inline-block ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 export const Kicker = ({ children, className = "" }) => (
   <span
     className={`inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.25em] font-semibold text-ink/60 ${className}`}
   >
-    <span className="h-2 w-2 rounded-full bg-baby" />
+    <motion.span
+      className="h-2 w-2 rounded-full bg-baby"
+      animate={{ scale: [1, 1.5, 1], opacity: [1, 0.6, 1] }}
+      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+    />
     {children}
   </span>
 );

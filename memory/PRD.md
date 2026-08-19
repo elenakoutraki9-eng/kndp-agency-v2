@@ -4,9 +4,16 @@
 Build the KNDP agency website. Clean, modern startup look; white + baby blue colors; hero "We Build Whatever You Need" with given subheading; DO NOT mention AI anywhere. Pages: Home (hero, what we do, why KNDP, CTA), Services (8 offerings incl. custom tools & automations), Portfolio (coming-soon placeholder), About (founder story/mission), Contact (form + email placeholder + calendar/booking link placeholder). Full-stack with contact form saved to database only.
 
 ## Architecture
-- Frontend: React 19 + react-router-dom (5 pages), Tailwind + custom brand tokens (paper/ink/baby), Outfit + Manrope fonts, framer-motion (masked line reveals, scroll reveals), lenis smooth scrolling, react-fast-marquee editorial ribbon, sonner toasts.
+- Frontend: React 19 single-page layout (no routes). One continuous scroll: Hero → Services → Portfolio → About → Contact. Sticky stacked panel transitions between sections (framer-motion scale/dim), scroll-spy navbar + footer smooth-scroll via Lenis, animated hero background (grid, drifting blobs, mouse-parallax shapes), word-masked headlines, animated counters, magnetic buttons, custom cursor ring, editorial marquee, sonner toasts.
 - Backend: FastAPI (`/api` prefix). POST /api/contact (save message), GET /api/contact (list messages), GET /api/ health.
 - Database: MongoDB via MONGO_URL/DB_NAME, collection `contact_messages` (uuid ids, ISO timestamps).
+
+## Implemented
+- 2026-08-19: All sections with award-style art direction: kinetic masked hero, animated hero background, stacked sticky panels, bento grids, numbered manifesto chapters, editorial marquee, giant dark footer.
+- 2026-08-19: Working contact form (service chips, validation, toast feedback) saving to MongoDB.
+- 2026-08-19: Portfolio filled with 6 realistic placeholder project cards (images, tags, "In progress" badges) keeping the coming-soon framing.
+- 2026-08-19: Converted from 5 routed pages to a single-page continuous scroll with section smooth-scroll nav and scroll-spy active states.
+- No "AI" mentioned anywhere on the site.
 
 ## User Personas
 - Prospective client (SMB owner): browses services, submits project enquiry.

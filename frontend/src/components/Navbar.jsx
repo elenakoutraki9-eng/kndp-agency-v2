@@ -1,23 +1,40 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { scrollToId } from "@/lib/scroll";
 
 const links = [
-  { to: "/", label: "Home", testid: "nav-link-home" },
-  { to: "/services", label: "Services", testid: "nav-link-services" },
-  { to: "/portfolio", label: "Portfolio", testid: "nav-link-portfolio" },
-  { to: "/about", label: "About", testid: "nav-link-about" },
-  { to: "/contact", label: "Contact", testid: "nav-link-contact" },
+  { id: "#hero", label: "Home", testid: "nav-link-home" },
+  { id: "#services", label: "Services", testid: "nav-link-services" },
+  { id: "#portfolio", label: "Portfolio", testid: "nav-link-portfolio" },
+  { id: "#about", label: "About", testid: "nav-link-about" },
+  { id: "#contact", label: "Contact", testid: "nav-link-contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
+  const [active, setActive] = useState("#hero");
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(`#${e.target.id}`);
+        }),
+      { rootMargin: "-35% 0px -55% 0px" }
+    );
+    links.forEach((l) => {
+      const el = document.querySelector(l.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const go = (id) => {
     setOpen(false);
-  }, [location.pathname]);
+    setActive(id);
+    scrollToId(id);
+  };
 
   return (
     <header
@@ -25,51 +42,45 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/40"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-10 h-20 flex items-center justify-between">
-        <Link
-          to="/"
+        <button
+          onClick={() => go("#hero")}
           data-testid="nav-logo"
           className="font-display font-bold text-2xl tracking-tighter flex items-center gap-1"
         >
           KNDP
           <span className="h-2.5 w-2.5 rounded-full bg-baby translate-y-1" />
-        </Link>
+        </button>
 
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
+            <button
+              key={l.id}
+              onClick={() => go(l.id)}
               data-testid={l.testid}
-              className={({ isActive }) =>
-                `relative text-sm font-semibold transition-colors duration-300 hover:text-ink ${
-                  isActive ? "text-ink" : "text-ink/50"
-                }`
-              }
+              className={`nav-underline relative text-sm font-semibold transition-colors duration-300 hover:text-ink ${
+                active === l.id ? "text-ink" : "text-ink/50"
+              }`}
             >
-              {({ isActive }) => (
-                <>
-                  {l.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-dot"
-                      className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1.5 w-1.5 rounded-full bg-baby"
-                    />
-                  )}
-                </>
+              {l.label}
+              {active === l.id && (
+                <motion.span
+                  layoutId="nav-dot"
+                  className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1.5 w-1.5 rounded-full bg-baby"
+                />
               )}
-            </NavLink>
+            </button>
           ))}
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            to="/contact"
+          <button
+            onClick={() => go("#contact")}
             data-testid="nav-cta-button"
-            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-baby px-5 py-2.5 text-sm font-bold text-ink transition-[transform,background-color] duration-300 hover:scale-105 hover:bg-baby-dark"
+            className="btn-shine hidden md:inline-flex items-center gap-1.5 rounded-full bg-baby px-5 py-2.5 text-sm font-bold text-ink transition-[transform,background-color] duration-300 hover:scale-105 hover:bg-baby-dark"
           >
             Start a Project
             <ArrowUpRight className="h-4 w-4" />
-          </Link>
+          </button>
           <button
             data-testid="mobile-menu-button"
             onClick={() => setOpen(!open)}
@@ -94,32 +105,30 @@ export default function Navbar() {
             <div className="px-6 py-6 flex flex-col gap-1">
               {links.map((l, i) => (
                 <motion.div
-                  key={l.to}
+                  key={l.id}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * i }}
                 >
-                  <NavLink
-                    to={l.to}
+                  <button
+                    onClick={() => go(l.id)}
                     data-testid={`mobile-${l.testid}`}
-                    className={({ isActive }) =>
-                      `block py-3 font-display text-2xl font-medium tracking-tight ${
-                        isActive ? "text-baby-dark" : "text-ink"
-                      }`
-                    }
+                    className={`block py-3 font-display text-2xl font-medium tracking-tight text-left w-full ${
+                      active === l.id ? "text-baby-dark" : "text-ink"
+                    }`}
                   >
                     {l.label}
-                  </NavLink>
+                  </button>
                 </motion.div>
               ))}
-              <Link
-                to="/contact"
+              <button
+                onClick={() => go("#contact")}
                 data-testid="mobile-nav-cta-button"
                 className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-baby px-6 py-3.5 font-bold text-ink"
               >
                 Start a Project
                 <ArrowUpRight className="h-4 w-4" />
-              </Link>
+              </button>
             </div>
           </motion.nav>
         )}

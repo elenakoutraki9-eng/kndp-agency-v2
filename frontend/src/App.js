@@ -1,27 +1,23 @@
 import { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Home from "@/pages/Home";
-import Services from "@/pages/Services";
-import Portfolio from "@/pages/Portfolio";
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
-
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, [pathname]);
-  return null;
-};
+import Cursor from "@/components/Cursor";
+import EditorialMarquee from "@/components/Marquee";
+import { StackedPanels } from "@/components/StackSection";
+import Hero from "@/sections/Hero";
+import ServicesSection from "@/sections/ServicesSection";
+import PortfolioSection from "@/sections/PortfolioSection";
+import AboutSection from "@/sections/AboutSection";
+import ContactSection from "@/sections/ContactSection";
+import { setLenis } from "@/lib/scroll";
 
 function App() {
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+    setLenis(lenis);
     let rafId;
     const raf = (time) => {
       lenis.raf(time);
@@ -30,28 +26,28 @@ function App() {
     rafId = requestAnimationFrame(raf);
     return () => {
       cancelAnimationFrame(rafId);
+      setLenis(null);
       lenis.destroy();
     };
   }, []);
 
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <div className="min-h-screen bg-paper text-ink font-body antialiased">
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+    <div className="min-h-screen bg-paper text-ink font-body antialiased">
+      <Cursor />
+      <Navbar />
+      <main>
+        <Hero />
+        <EditorialMarquee />
+        <StackedPanels className="pb-[12vh]">
+          <ServicesSection />
+          <PortfolioSection />
+          <AboutSection />
+          <ContactSection />
+        </StackedPanels>
+      </main>
+      <Footer />
       <Toaster position="bottom-right" richColors />
-    </BrowserRouter>
+    </div>
   );
 }
 

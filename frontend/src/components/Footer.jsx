@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import { Magnetic } from "@/components/Reveal";
+import { scrollToId } from "@/lib/scroll";
 
 const nav = [
-  { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/portfolio", label: "Portfolio" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { id: "#hero", label: "Home" },
+  { id: "#services", label: "Services" },
+  { id: "#portfolio", label: "Portfolio" },
+  { id: "#about", label: "About" },
+  { id: "#contact", label: "Contact" },
 ];
 
 export default function Footer() {
@@ -18,16 +19,18 @@ export default function Footer() {
             <p className="text-xs uppercase tracking-[0.25em] font-semibold text-white/50 mb-6">
               Got something to build?
             </p>
-            <Link
-              to="/contact"
-              data-testid="footer-cta-link"
-              className="group inline-flex items-center gap-3 font-display text-4xl md:text-5xl font-medium tracking-tighter"
-            >
-              Let's talk
-              <span className="inline-flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-baby text-ink transition-transform duration-300 group-hover:rotate-45">
-                <ArrowUpRight className="h-6 w-6" />
-              </span>
-            </Link>
+            <Magnetic strength={0.15}>
+              <button
+                onClick={() => scrollToId("#contact")}
+                data-testid="footer-cta-link"
+                className="group inline-flex items-center gap-3 font-display text-4xl md:text-5xl font-medium tracking-tighter"
+              >
+                Let's talk
+                <span className="inline-flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-baby text-ink transition-transform duration-300 group-hover:rotate-45">
+                  <ArrowUpRight className="h-6 w-6" />
+                </span>
+              </button>
+            </Magnetic>
             <a
               href="mailto:hello@kndp.studio"
               data-testid="footer-email-link"
@@ -40,14 +43,14 @@ export default function Footer() {
             <p className="text-xs uppercase tracking-[0.25em] font-semibold text-white/50 mb-6">Menu</p>
             <ul className="space-y-3">
               {nav.map((n) => (
-                <li key={n.to}>
-                  <Link
-                    to={n.to}
+                <li key={n.id}>
+                  <button
+                    onClick={() => scrollToId(n.id)}
                     data-testid={`footer-link-${n.label.toLowerCase()}`}
                     className="text-white/70 hover:text-baby transition-colors duration-300"
                   >
                     {n.label}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
