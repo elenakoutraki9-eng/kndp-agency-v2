@@ -58,6 +58,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 
 - 2026-07: Removed Services offering-cards bento grid; made FAQ section more compact; moved FAQ section to appear after Contact (page order: Hero -> Problems -> Services -> How It Works -> Portfolio -> Contact -> FAQ -> Footer).
 
+
+- 2026-07: Added a phone mockup (ServicesPhoneMockup.jsx) to the Services section, sitting alongside the grouped service category cards (sticky on desktop, stacked below on mobile). Cycles through 3 mini screens on a 2.6s loop: website/landing page, mobile app UI, and dashboard/web tool, with progress dots + label, in white/baby-blue palette.
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).

@@ -1,85 +1,24 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Send, Check } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Lightbulb, Hammer, Rocket } from "lucide-react";
 
-const SCRIPT = [
-  { type: "msg", from: "customer", text: "Hi, I run a restaurant and I need an online reservation system", t: 800 },
-  { type: "typing", t: 1100 },
-  { type: "msg", from: "kndp", text: "Perfect! We can build you a custom booking app with table management, confirmations & reminders 🚀", t: 1400 },
-  { type: "msg", from: "customer", text: "How long would it take?", t: 900 },
-  { type: "typing", t: 900 },
-  { type: "msg", from: "kndp", text: "About 5–7 days. Want a free estimate?", t: 1100 },
-  { type: "msg", from: "customer", text: "Yes please!", t: 800 },
-  { type: "typing", t: 900 },
-  { type: "msg", from: "kndp", text: "Done! Your reservation system is live ✅", preview: true, t: 3000 },
+const STEPS = [
+  { n: 1, title: "Share Your Idea", icon: Lightbulb },
+  { n: 2, title: "We Build It", icon: Hammer },
+  { n: 3, title: "You Launch", icon: Rocket },
 ];
 
-const TypingBubble = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 8, scale: 0.95 }}
-    animate={{ opacity: 1, y: 0, scale: 1 }}
-    className="self-end bg-baby-light rounded-2xl rounded-br-md px-3.5 py-2.5 flex items-center gap-1"
-  >
-    {[0, 1, 2].map((i) => (
-      <motion.span
-        key={i}
-        className="h-1.5 w-1.5 rounded-full bg-baby-dark/70"
-        animate={{ y: [0, -3, 0] }}
-        transition={{ repeat: Infinity, duration: 0.9, delay: i * 0.15 }}
-      />
-    ))}
-  </motion.div>
-);
-
-const AppPreview = () => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.9 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ delay: 0.4, duration: 0.4 }}
-    className="relative mt-2 w-44 rounded-xl bg-white border border-ink/10 p-2.5 shadow-sm"
-  >
-    <motion.span
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.7, type: "spring", stiffness: 300, damping: 15 }}
-      className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-ink text-baby flex items-center justify-center"
-    >
-      <Check className="h-3.5 w-3.5" />
-    </motion.span>
-    <div className="h-1.5 w-16 rounded-full bg-baby mb-2" />
-    <div className="space-y-1.5">
-      <div className="flex items-center justify-between rounded-md bg-mist px-2 py-1.5">
-        <span className="text-[8px] font-bold text-ink/70">Tonight · Table for 2</span>
-        <span className="text-[8px] font-bold text-baby-dark">19:00</span>
-      </div>
-      <div className="flex items-center justify-between rounded-md bg-mist px-2 py-1.5">
-        <span className="text-[8px] font-bold text-ink/70">Tomorrow · Table for 4</span>
-        <span className="text-[8px] font-bold text-baby-dark">20:30</span>
-      </div>
-    </div>
-    <div className="mt-2 rounded-md bg-baby py-1.5 text-center text-[8px] font-extrabold text-ink">
-      Confirmed
-    </div>
-  </motion.div>
-);
+const HOLD_MS = 2200;
 
 export default function ChatPhone() {
-  const [visible, setVisible] = useState(0);
-  const [loop, setLoop] = useState(0);
+  const [step, setStep] = useState(0);
 
   useEffect(() => {
-    if (visible >= SCRIPT.length) {
-      const id = setTimeout(() => {
-        setVisible(0);
-        setLoop((l) => l + 1);
-      }, 2600);
-      return () => clearTimeout(id);
-    }
-    const id = setTimeout(() => setVisible((v) => v + 1), SCRIPT[visible].t);
+    const id = setTimeout(() => setStep((s) => (s + 1) % STEPS.length), HOLD_MS);
     return () => clearTimeout(id);
-  }, [visible]);
+  }, [step]);
 
-  const items = SCRIPT.slice(0, visible);
+  const current = STEPS[step];
 
   return (
     <div data-testid="hero-phone" className="relative w-[280px] sm:w-[310px]">
@@ -92,60 +31,49 @@ export default function ChatPhone() {
                 K
               </span>
               <div>
-                <p className="text-xs font-bold text-ink leading-tight">KNDP Studio</p>
-                <p className="text-[10px] text-ink/45 flex items-center gap-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  Online — replies in ~2h
-                </p>
+                <p className="text-xs font-bold text-ink leading-tight">How We Work</p>
+                <p className="text-[10px] text-ink/45">From idea to launch, together</p>
               </div>
             </div>
           </div>
 
           <div
-            key={loop}
-            data-testid="hero-chat"
-            className="flex-1 flex flex-col justify-end gap-2 p-3 overflow-hidden"
+            data-testid="hero-onboarding"
+            className="flex-1 flex flex-col items-center justify-center gap-6 px-6"
           >
-            {items.map((item, i) =>
-              item.type === "typing" ? (
-                i === items.length - 1 ? <TypingBubble key={`${loop}-${i}`} /> : null
-              ) : (
-                <motion.div
-                  key={`${loop}-${i}`}
-                  data-testid={`chat-message-${i}`}
-                  initial={{ opacity: 0, y: 12, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className={`max-w-[82%] ${
-                    item.from === "kndp" ? "self-end" : "self-start"
-                  }`}
-                >
-                  <div
-                    className={`px-3 py-2 text-[11px] leading-snug font-semibold ${
-                      item.from === "kndp"
-                        ? "bg-baby text-ink rounded-2xl rounded-br-md"
-                        : "bg-mist text-ink/80 rounded-2xl rounded-bl-md"
-                    }`}
-                  >
-                    {item.text}
-                  </div>
-                  {item.preview && (
-                    <div className="flex justify-end">
-                      <AppPreview />
-                    </div>
-                  )}
-                </motion.div>
-              )
-            )}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.n}
+                data-testid={`onboarding-step-${current.n}`}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -14 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col items-center text-center"
+              >
+                <span className="relative inline-flex h-20 w-20 items-center justify-center rounded-full bg-baby-light">
+                  <current.icon className="h-9 w-9 text-baby-dark" />
+                  <span className="absolute -top-1.5 -right-1.5 h-7 w-7 rounded-full bg-ink text-baby flex items-center justify-center font-display text-xs font-bold">
+                    {current.n}
+                  </span>
+                </span>
+                <p className="mt-6 font-display text-xl font-semibold tracking-tight text-ink">
+                  {current.title}
+                </p>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          <div className="p-3 border-t border-ink/5 bg-white">
-            <div className="flex items-center gap-2 rounded-full bg-mist px-3.5 py-2">
-              <span className="flex-1 text-[10px] text-ink/35 font-medium">Message…</span>
-              <span className="h-6 w-6 rounded-full bg-baby flex items-center justify-center">
-                <Send className="h-3 w-3 text-ink" />
-              </span>
-            </div>
+          <div className="p-5 border-t border-ink/5 bg-white flex items-center justify-center gap-2">
+            {STEPS.map((s) => (
+              <span
+                key={s.n}
+                data-testid={`onboarding-dot-${s.n}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  s.n === current.n ? "w-6 bg-baby-dark" : "w-1.5 bg-ink/15"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
