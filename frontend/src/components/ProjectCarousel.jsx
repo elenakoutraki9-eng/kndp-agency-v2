@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 export default function ProjectCarousel({ projects }) {
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
   const [metrics, setMetrics] = useState({ width: 340, step: 230 });
   const total = projects.length;
 
@@ -20,78 +19,91 @@ export default function ProjectCarousel({ projects }) {
     return () => window.removeEventListener("resize", calc);
   }, []);
 
-  const go = (dir) => {
-    setDirection(dir);
-    setIndex((i) => (i + dir + total) % total);
-  };
+  const go = (dir) => setIndex((i) => (i + dir + total) % total);
 
   const handleDragEnd = (_e, info) => {
     if (info.offset.x < -60) go(1);
     else if (info.offset.x > 60) go(-1);
   };
 
-  const p = projects[index];
-
   return (
     <div data-testid="portfolio-carousel" className="mt-14">
-      <div
-        className="relative h-[440px] sm:h-[480px] md:h-[520px] overflow-hidden"
-        style={{ perspective: "1500px" }}
-      >
+      <div className="relative h-[440px] sm:h-[480px] md:h-[520px] overflow-hidden">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 z-20 bg-gradient-to-r from-mist to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 z-20 bg-gradient-to-l from-mist to-transparent" />
 
-        <div data-testid="portfolio-carousel-track" className="absolute inset-0">
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={index}
-              data-testid={`portfolio-card-${index}`}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.6}
-              onDragEnd={handleDragEnd}
-              className="absolute top-0 rounded-3xl border border-baby/50 bg-white overflow-hidden shadow-xl shadow-baby/25 cursor-grab active:cursor-grabbing"
-              style={{
-                left: "50%",
-                width: metrics.width,
-                marginLeft: -metrics.width / 2,
-              }}
-              initial={{ x: direction >= 0 ? metrics.step : -metrics.step, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: direction >= 0 ? -metrics.step : metrics.step, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 260, damping: 28 }}
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  loading="lazy"
-                  draggable={false}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/25 to-transparent" />
-                <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/85 backdrop-blur px-3.5 py-1.5 text-xs font-bold text-ink/70">
-                  <span className="h-1.5 w-1.5 rounded-full bg-baby-dark animate-pulse" />
-                  In progress
-                </span>
-                <span className="absolute top-4 right-4 inline-flex rounded-full bg-ink/70 backdrop-blur px-3.5 py-1.5 text-xs font-bold text-white">
-                  {p.tag}
-                </span>
-              </div>
-              <div className="p-6 md:p-7 flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-display text-lg md:text-2xl font-medium tracking-tight">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/60">{p.desc}</p>
+        <motion.div
+          data-testid="portfolio-carousel-track"
+          className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.6}
+          onDragEnd={handleDragEnd}
+        >
+          {projects.map((p, i) => {
+            let offset = i - index;
+            if (offset > total / 2) offset -= total;
+            if (offset < -total / 2) offset += total;
+            const abs = Math.abs(offset);
+            if (abs > 1) return null;
+            const isActive = offset === 0;
+
+            return (
+              <motion.div
+                key={p.title}
+                data-testid={`portfolio-card-${i}`}
+                onClick={() => !isActive && setIndex(i)}
+                className={`absolute top-0 rounded-3xl border bg-white overflow-hidden shadow-xl ${
+                  isActive
+                    ? "border-baby/50 shadow-baby/25 cursor-default"
+                    : "border-ink/8 shadow-ink/10 cursor-pointer"
+                }`}
+                style={{
+                  left: "50%",
+                  width: metrics.width,
+                  marginLeft: -metrics.width / 2,
+                }}
+                initial={false}
+                animate={{
+                  x: offset * metrics.step,
+                  scale: isActive ? 1 : 0.9,
+                  opacity: isActive ? 1 : 0.55,
+                  zIndex: 10 - abs,
+                }}
+                transition={{ type: "spring", stiffness: 260, damping: 28 }}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    loading="lazy"
+                    draggable={false}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/25 to-transparent" />
+                  <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/85 backdrop-blur px-3.5 py-1.5 text-xs font-bold text-ink/70">
+                    <span className="h-1.5 w-1.5 rounded-full bg-baby-dark animate-pulse" />
+                    In progress
+                  </span>
+                  <span className="absolute top-4 right-4 inline-flex rounded-full bg-ink/70 backdrop-blur px-3.5 py-1.5 text-xs font-bold text-white">
+                    {p.tag}
+                  </span>
                 </div>
-                <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ink/10">
-                  <ArrowUpRight className="h-4 w-4" />
-                </span>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+                <div className="p-6 md:p-7 flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-display text-lg md:text-2xl font-medium tracking-tight">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink/60">{p.desc}</p>
+                  </div>
+                  <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ink/10">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
         <button
           type="button"
@@ -119,7 +131,6 @@ export default function ProjectCarousel({ projects }) {
             key={i}
             type="button"
             onClick={() => {
-              setDirection(i >= index ? 1 : -1);
               setIndex(i);
             }}
             data-testid={`portfolio-dot-${i}`}

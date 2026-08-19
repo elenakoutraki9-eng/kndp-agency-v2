@@ -40,6 +40,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 
 - 2026-07: Made Services and Contact sections more compact — reduced section/card padding, spacing, icon/text sizes across offering cards, idea cards and the 8-row service list; Contact form narrowed to max-w-md with smaller inputs/chips/textarea (3 rows) so more content fits without scrolling.
 
+
+- 2026-07: Visual-editor edits — removed Hero promise-row checkmarks; increased WordMask reveal padding to prevent descender/ascender clipping on headlines site-wide; made How It Works section more compact (padding/card sizes reduced); Portfolio carousel now shows a partial peek of prev/next cards (faded, no rotation) alongside the active center card.
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).

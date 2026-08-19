@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Verify compactness changes on the KNDP agency site. Services section: padding, spacing, and card sizes were reduced (offering cards, idea cards, and 8-row service list all got smaller padding/text/icons). Contact section: form is narrower (max-w-md, centered), more compact (smaller input padding/text, textarea 3 rows instead of 5, smaller buttons/chips). Verify at 1440x900 desktop and 390x844 mobile that all elements render correctly without text overlapping, clipping, or being cut off. Test form submission. Check for layout breakage or console errors. Quick regression: hero and portfolio carousel still work."
+user_problem_statement: "Verify four visual edits on the KNDP agency site. 1) Hero section: promise row (checkmarks 'Free estimate · Reply within 2 hours · You own everything') has been REMOVED - confirm it's gone and spacing is reasonable. 2) Check headline text across site (Hero, Services, How It Works, Contact) for clipped descenders/ascenders since text-reveal mask padding was adjusted. 3) How It Works section: padding and card sizes reduced for compactness - verify 3 step cards render correctly with no overlapping/clipped text. 4) Portfolio carousel: now shows active center card + partial peek of prev/next cards (smaller, faded, no rotation) - verify peek is visible, arrows/dots/swipe work. 5) No console errors, contact form still works."
 
 frontend:
   - task: "Browser Build Mockup Animation in Service Row 01"
@@ -333,10 +333,58 @@ frontend:
           agent: "testing"
           comment: "✅ RE-TESTED: Quick regression test passed after compactness changes. Hero section (data-testid='hero-section') visible and working correctly. Portfolio carousel (data-testid='portfolio-carousel') visible and working correctly with card-0 visible. All navbar links functional. No layout breakage from Services and Contact section compactness changes. Lenis smooth scroll working across all sections."
 
+  - task: "Hero Section Promise Row Removal"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/sections/Hero.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ PROMISE ROW SUCCESSFULLY REMOVED! Confirmed that data-testid='hero-promise-row' is NOT present in the DOM. The promise row with checkmarks ('Free estimate · Reply within 2 hours · You own everything') has been completely removed from the hero section. ✅ SPACING VERIFIED: Spacing between elements looks reasonable with no big empty gap where the promise row used to be. Measured gaps: Headline→Subheading: 24.0px, Subheading→CTA buttons: 33.0px. All other hero elements remain intact and properly displayed: headline ('We Build / Whatever / You Need.'), subheading (115 chars), both CTA buttons ('Get a Free Estimate', 'See What We Build'), and stats row (3 stats visible). No layout breakage or overlap detected. Hero section maintains clean, balanced appearance after removal."
+
+  - task: "Headline Text Visibility - No Clipped Descenders/Ascenders"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Reveal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ ALL HEADLINE TEXT FULLY VISIBLE! Verified all headline text across the site after text-reveal mask padding adjustment. NO clipped descenders (y, g, p, q, j) or ascenders (h, k, l, b, d, f, t) detected. ✅ HERO HEADLINE: 'We Build / Whatever / You Need.' - Height: 180.0px, contains descenders in 'Whatever' - fully visible. ✅ SERVICES HEADLINE: 'If it lives on a screen, we can build it.' - Height: 96.0px, fully visible. ✅ HOW IT WORKS HEADLINE: 'Three steps. No hassle.' - Height: 48.0px, fully visible. ✅ CONTACT HEADLINE: 'Let's talk.' - Height: 96.0px, descender in 'talk' fully visible. All headlines render with proper padding and no text clipping. The text-reveal mask component padding adjustment is working correctly. Screenshots captured for visual verification."
+
+  - task: "How It Works Section Compactness"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/sections/HowItWorksSection.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ HOW IT WORKS SECTION COMPACTNESS VERIFIED! Section (data-testid='how-it-works-section') successfully reduced in size with padding and card sizes decreased. ✅ SECTION DIMENSIONS: Height: 481.4px, Width: 1843.2px (visibly more compact than before). ✅ ALL 3 STEP CARDS RENDER CORRECTLY: Step 1 card (data-testid='how-step-1'): 373.8x174.2px, Step 2 card (data-testid='how-step-2'): 373.8x174.2px, Step 3 card (data-testid='how-step-3'): 373.8x174.2px. ✅ NO OVERLAPPING OR CLIPPED TEXT: All card content (step numbers, icons, titles, descriptions) fully visible and properly spaced. Cards maintain proper gap between them with no overlap detected. Section padding (py-12 md:py-16) and card padding (p-5 md:p-6) working correctly. The compactness changes successfully make the section more space-efficient while maintaining readability and visual hierarchy."
+
+  - task: "Portfolio Carousel Peek Effect (Center Card + Side Card Previews)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ProjectCarousel.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ PORTFOLIO CAROUSEL PEEK EFFECT WORKING PERFECTLY! Carousel (data-testid='portfolio-carousel') now displays active center card with partial peek of previous and next cards on the sides. ✅ CENTER CARD (ACTIVE): Card 0 has full opacity (1.0) and full size (380x482px at desktop), clearly visible as the main focus. ✅ SIDE CARDS (PEEK): 2 side cards visible with reduced opacity (0.55 - faded appearance) and scaled down to ~0.90 (342px width vs 380px center card). Side cards are smaller and slightly faded, providing visual preview without rotation. ✅ ARROW NAVIGATION: Next arrow (data-testid='portfolio-carousel-next') and prev arrow (data-testid='portfolio-carousel-prev') both functional. Clicking next advances from Card 0→Card 1 correctly. Clicking prev retreats correctly. ✅ DOT INDICATORS: All 6 dots (data-testid='portfolio-dot-0' through 'portfolio-dot-5') present and functional. Clicking any dot jumps directly to that card and updates active state correctly. ✅ MOBILE SWIPE GESTURES (390x844): Swipe left advances cards, swipe right retreats cards. Drag threshold (60px) working correctly. Swipe gesture successfully changed cards during testing. ✅ GRADIENT OVERLAYS: Left and right gradient overlays (w-16 md:w-32) visible, creating smooth fade effect at edges. The peek effect implementation is production-ready and provides excellent visual preview of adjacent cards."
+
 metadata:
   created_by: "testing_agent"
-  version: "1.6"
-  test_sequence: 7
+  version: "1.7"
+  test_sequence: 8
   run_ui: true
   test_date: "2025-01-XX"
 
@@ -361,3 +409,5 @@ agent_communication:
       message: "TESTED Hero section phone mockup upward shift (negative top offset tweak). ✅ ALL TESTS PASSED SUCCESSFULLY! Phone mockup column successfully shifted upward using negative top offsets: -32px at lg breakpoint (1024px+), -24px at md breakpoint (768px+), -16px at mobile. At 1440x800 viewport, phone column vertical center is at 396px, which is ABOVE the viewport center of 400px (subtle upward shift confirmed). ✅ ALL ENTRANCE ANIMATIONS COMPLETE: All elements (headline, subheading, both CTA buttons, promise row with 3 checkmark items, and all 3 stats numbers) are fully visible with opacity 1.0. NO elements stuck invisible. ✅ ROTATING CHIP & FLOATING CARD: Both elements are visible and correctly positioned relative to the phone mockup. They moved up together with the phone, maintaining proper alignment with no overlap or misalignment issues. ✅ HERO CONTENT FIT: Hero section bottom is exactly at 800px (perfect fit with 0px clearance, NO scrolling needed within hero section). ✅ MOBILE (390x844): No horizontal overflow, phone column has correct -16px top offset, rotating chip visible, all elements render correctly. ✅ NO CONSOLE ERRORS detected. ✅ QUICK REGRESSION: Services section, Portfolio carousel, and Contact section all working correctly. The phone mockup upward shift implementation is production-ready and meets all requirements from the review request."
     - agent: "testing"
       message: "TESTED compactness changes on Services and Contact sections. ✅ ALL TESTS PASSED SUCCESSFULLY! SERVICES SECTION: All offering cards (4), idea cards (6), and service rows (8) render correctly with compact padding and spacing at both desktop (1440x900) and mobile (390x844) viewports. NO text overlapping, clipping, or being cut off. Section looks noticeably more compact than typical spacious layouts. CONTACT SECTION: Form is narrower (max-w-md = 448px) and centered correctly. All input fields have compact padding/text. Textarea has 3 rows (down from 5). All 8 service chips and submit button render correctly with compact styling. Form submission WORKING - successfully submitted test data and received success toast. Backend integration confirmed working. MOBILE: Both sections fit perfectly within 390x844 viewport with NO horizontal overflow. NO CONSOLE ERRORS detected. REGRESSION: Hero section and Portfolio carousel still work correctly. The compactness changes are production-ready and meet all requirements from the review request."
+    - agent: "testing"
+      message: "TESTED four visual edits on KNDP agency site. ✅ ALL TESTS PASSED SUCCESSFULLY! 1) HERO PROMISE ROW REMOVED: Confirmed data-testid='hero-promise-row' is NOT present in DOM. Spacing looks reasonable (24px headline→subheading, 33px subheading→CTA) with no big empty gap. All other hero elements (headline, subheading, CTAs, stats) display correctly. 2) HEADLINE TEXT VISIBILITY: All headlines across site (Hero 'We Build / Whatever / You Need.', Services 'If it lives on a screen, we can build it.', How It Works 'Three steps. No hassle.', Contact 'Let's talk.') render with full visibility - NO clipped descenders (y, g, p, q, j) or ascenders (h, k, l, b, d, f, t) detected. Text-reveal mask padding adjustment working correctly. 3) HOW IT WORKS COMPACTNESS: Section height 481.4px (compact). All 3 step cards (data-testid='how-step-1/2/3') render correctly at 373.8x174.2px with NO overlapping or clipped text. Section visibly more compact. 4) PORTFOLIO CAROUSEL PEEK EFFECT: Center card has opacity 1.0 and full size (380x482px). Side cards have opacity 0.55 (faded) and scaled to ~0.90 (342px width). Peek effect visible with 2 side cards showing partial preview. Arrow navigation working (next/prev functional). All 6 dot indicators working (clicking jumps to correct card). Mobile swipe gestures working (390x844 viewport - swipe left/right changes cards). 5) NO CONSOLE ERRORS detected. Contact form submission WORKING (success toast confirmed). The four visual edits are production-ready and meet all requirements from the review request."

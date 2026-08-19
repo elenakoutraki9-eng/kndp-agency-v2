@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, ArrowDown, Check } from "lucide-react";
+import { ArrowUpRight, ArrowDown } from "lucide-react";
 import { Kicker, WordMask, Counter, Magnetic } from "@/components/Reveal";
 import HeroBackground, { useMouseParallax } from "@/components/HeroBackground";
 import ChatPhone from "@/components/ChatPhone";
@@ -14,8 +14,6 @@ const stats = [
   { to: 2, suffix: "h", label: "Response time promise" },
   { to: 4, suffix: "w", label: "Typical website delivery" },
 ];
-
-const promises = ["Free estimate", "Reply within 2 hours", "You own everything"];
 
 export default function Hero(props) {
   const heroRef = useRef(null);
@@ -102,21 +100,7 @@ export default function Hero(props) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.15 }}
-            data-testid="hero-promise-row"
-            className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-ink/55"
-          >
-            {promises.map((p) => (
-              <span key={p} className="inline-flex items-center gap-2">
-                <Check className="h-4 w-4 text-baby-dark" />
-                {p}
-              </span>
-            ))}
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.25 }}
-            className="mt-8 flex flex-wrap gap-x-12 gap-y-4 border-t border-ink/10 pt-6"
+            className="mt-5 flex flex-wrap gap-x-12 gap-y-4 border-t border-ink/10 pt-6"
           >
             {stats.map((s) => (
               <div
