@@ -12,7 +12,6 @@ import ProblemSolutionSection from "@/sections/ProblemSolutionSection";
 import ServicesSection from "@/sections/ServicesSection";
 import HowItWorksSection from "@/sections/HowItWorksSection";
 import PortfolioSection from "@/sections/PortfolioSection";
-import TestimonialsSection from "@/sections/TestimonialsSection";
 import FaqSection from "@/sections/FaqSection";
 import ContactSection from "@/sections/ContactSection";
 import { setLenis } from "@/lib/scroll";
@@ -49,7 +48,6 @@ function App() {
           <HowItWorksSection />
           <PortfolioSection />
         </StackedPanels>
-        <TestimonialsSection />
         <FaqSection />
         <ContactSection />
       </main>
