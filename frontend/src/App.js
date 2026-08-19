@@ -48,8 +48,8 @@ function App() {
           <HowItWorksSection />
           <PortfolioSection />
         </StackedPanels>
-        <FaqSection />
         <ContactSection />
+        <FaqSection />
       </main>
       <Footer />
       <Toaster position="bottom-right" richColors />

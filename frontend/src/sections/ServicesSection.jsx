@@ -1,8 +1,5 @@
 import {
   ArrowUpRight,
-  Globe,
-  Wrench,
-  Workflow,
   Smartphone,
   UtensilsCrossed,
   Boxes,
@@ -13,32 +10,6 @@ import {
 import { Reveal, Kicker, WordMask, Magnetic } from "@/components/Reveal";
 import { scrollToId } from "@/lib/scroll";
 
-const offerings = [
-  {
-    icon: Globe,
-    title: "Websites & Web Apps",
-    text: "Fast, polished websites and full-featured web applications — from marketing sites to complex platforms.",
-    span: "md:col-span-7",
-  },
-  {
-    icon: Wrench,
-    title: "Custom Tools & Programs",
-    text: "Internal tools, dashboards and programs built around exactly how your business works.",
-    span: "md:col-span-5",
-  },
-  {
-    icon: Workflow,
-    title: "Automations",
-    text: "Repetitive work, removed. We connect your systems and automate the busywork out of your day.",
-    span: "md:col-span-5",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Apps",
-    text: "Clean, reliable apps your customers and team will actually enjoy using.",
-    span: "md:col-span-7",
-  },
-];
 
 const categories = [
   {
@@ -132,25 +103,6 @@ export default function ServicesSection() {
               <WordMask text="we can build it." accent={["build", "it."]} delay={0.2} className="block" />
             </h2>
           </Reveal>
-
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-12 gap-4">
-            {offerings.map((o, i) => (
-              <Reveal key={o.title} delay={0.08 * i} className={o.span}>
-                <div
-                  data-testid={`offering-card-${i}`}
-                  className="group h-full rounded-2xl border border-ink/8 bg-white p-5 md:p-6 transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-baby/15 hover:border-baby/50"
-                >
-                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-baby-light text-baby-dark transition-[background-color,color,transform] duration-500 group-hover:bg-baby group-hover:text-ink group-hover:-rotate-12">
-                    <o.icon className="h-[18px] w-[18px]" />
-                  </div>
-                  <h3 className="mt-3 font-display text-lg md:text-xl font-medium tracking-tight">
-                    {o.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm text-ink/60 leading-relaxed">{o.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
 
           <Reveal className="mt-10 md:mt-12">
             <p className="text-xs uppercase tracking-[0.25em] font-semibold text-ink/50">

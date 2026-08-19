@@ -35,14 +35,14 @@ const FaqItem = ({ faq, index, open, onToggle }) => (
       onClick={onToggle}
       data-testid={`faq-question-${index}`}
       aria-expanded={open}
-      className="group flex w-full items-center justify-between gap-6 py-7 md:py-8 text-left"
+      className="group flex w-full items-center justify-between gap-6 py-5 md:py-6 text-left"
     >
-      <span className="flex items-baseline gap-5">
-        <span className="font-display text-sm font-light text-baby-dark">
+      <span className="flex items-baseline gap-4">
+        <span className="font-display text-xs font-light text-baby-dark">
           {String(index + 1).padStart(2, "0")}
         </span>
         <span
-          className={`font-display text-xl md:text-2xl font-medium tracking-tight transition-colors duration-300 ${
+          className={`font-display text-lg md:text-xl font-medium tracking-tight transition-colors duration-300 ${
             open ? "text-baby-dark" : "text-ink group-hover:text-baby-dark"
           }`}
         >
@@ -52,11 +52,11 @@ const FaqItem = ({ faq, index, open, onToggle }) => (
       <motion.span
         animate={{ rotate: open ? 45 : 0 }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${
+        className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${
           open ? "bg-baby border-baby text-ink" : "border-ink/10"
         }`}
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-3.5 w-3.5" />
       </motion.span>
     </button>
     <AnimatePresence initial={false}>
@@ -70,7 +70,7 @@ const FaqItem = ({ faq, index, open, onToggle }) => (
         >
           <p
             data-testid={`faq-answer-${index}`}
-            className="pb-8 pl-10 md:pl-12 pr-4 max-w-2xl text-ink/60 leading-relaxed"
+            className="pb-5 pl-8 md:pl-10 pr-4 max-w-2xl text-sm text-ink/60 leading-relaxed"
           >
             {faq.a}
           </p>
@@ -84,19 +84,19 @@ export default function FaqSection() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" data-testid="faq-section" className="py-20 md:py-28 bg-white">
-      <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <section id="faq" data-testid="faq-section" className="py-12 md:py-16 bg-white">
+      <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4">
             <Reveal>
               <Kicker>FAQ</Kicker>
               <h2
                 data-testid="faq-headline"
-                className="mt-5 font-display font-medium tracking-tight text-4xl md:text-5xl"
+                className="mt-3 font-display font-medium tracking-tight text-3xl md:text-4xl"
               >
                 <WordMask text="Questions," className="block" />
                 <WordMask text="answered." accent={["answered."]} delay={0.2} className="block" />
               </h2>
-              <p className="mt-6 text-ink/60 leading-relaxed max-w-sm">
+              <p className="mt-3 text-sm text-ink/60 leading-relaxed max-w-sm">
                 The things people usually ask before starting a project with us.
                 Anything else — just ask, we reply within 2 hours.
               </p>

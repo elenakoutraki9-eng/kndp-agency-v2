@@ -55,6 +55,9 @@ Build the KNDP agency website. Clean, modern startup look; white + baby blue col
 
 - 2026-07: Made "Problems We Solve" section more compact (py-20/28 -> py-12/16, headline text-4xl/6xl -> text-3xl/5xl, row spacing/padding/icon sizes reduced).
 
+
+- 2026-07: Removed Services offering-cards bento grid; made FAQ section more compact; moved FAQ section to appear after Contact (page order: Hero -> Problems -> Services -> How It Works -> Portfolio -> Contact -> FAQ -> Footer).
+
 ## Prioritized Backlog
 - P0: Admin view for contact submissions (protected page or basic auth).
 - P1: Email notification on new enquiry (Resend integration).
