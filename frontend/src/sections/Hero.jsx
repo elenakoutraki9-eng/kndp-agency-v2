@@ -95,7 +95,7 @@ export default function Hero(props) {
         <div className="lg:col-span-5 relative -top-4 md:-top-6 lg:-top-8">
           <motion.div
             style={{ x: imgMX, y: imgMY }}
-            className="[zoom:0.93] sm:[zoom:0.9] lg:[zoom:0.83] origin-top"
+            className="[zoom:0.89] sm:[zoom:0.87] lg:[zoom:0.8] origin-top"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 24 }}
