@@ -12,8 +12,6 @@ import {
 } from "lucide-react";
 import { Reveal, Kicker, WordMask, Magnetic } from "@/components/Reveal";
 import { scrollToId } from "@/lib/scroll";
-import BrowserBuildMockup from "@/components/BrowserBuildMockup";
-import PhoneTapMockup from "@/components/PhoneTapMockup";
 
 const offerings = [
   {
@@ -157,47 +155,29 @@ export default function ServicesSection() {
             </p>
           </Reveal>
           <div className="mt-8 border-t border-ink/10" data-testid="services-list-section">
-            {services.map((s, i) => {
-              const hasMockup = s.n === "01" || s.n === "03";
-              return (
-                <Reveal key={s.n} delay={0.04 * i} x={-40} y={0}>
-                  <div
-                    data-testid={`service-row-${s.n}`}
-                    className="group grid grid-cols-12 gap-4 md:gap-8 items-center border-b border-ink/10 py-8 md:py-12 transition-colors duration-500 hover:bg-baby-light/60 cursor-default"
-                  >
-                    <span className="col-span-3 md:col-span-1 font-display text-2xl md:text-4xl font-light text-baby-dark transition-transform duration-500 group-hover:scale-110 origin-left">
-                      {s.n}
+            {services.map((s, i) => (
+              <Reveal key={s.n} delay={0.04 * i} x={-40} y={0}>
+                <div
+                  data-testid={`service-row-${s.n}`}
+                  className="group grid grid-cols-12 gap-4 md:gap-8 items-center border-b border-ink/10 py-8 md:py-12 transition-colors duration-500 hover:bg-baby-light/60 cursor-default"
+                >
+                  <span className="col-span-3 md:col-span-1 font-display text-2xl md:text-4xl font-light text-baby-dark transition-transform duration-500 group-hover:scale-110 origin-left">
+                    {s.n}
+                  </span>
+                  <h3 className="col-span-9 md:col-span-4 font-display text-2xl md:text-4xl font-medium tracking-tight transition-transform duration-500 group-hover:translate-x-2">
+                    {s.title}
+                  </h3>
+                  <p className="col-span-9 col-start-4 md:col-span-5 md:col-start-6 text-ink/60 leading-relaxed">
+                    {s.text}
+                  </p>
+                  <span className="hidden md:flex md:col-span-2 justify-end">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 transition-[background-color,transform] duration-500 group-hover:bg-baby group-hover:rotate-45">
+                      <ArrowUpRight className="h-5 w-5" />
                     </span>
-                    <h3
-                      className={`col-span-9 font-display text-2xl md:text-4xl font-medium tracking-tight transition-transform duration-500 group-hover:translate-x-2 ${
-                        hasMockup ? "md:col-span-3" : "md:col-span-4"
-                      }`}
-                    >
-                      {s.title}
-                    </h3>
-                    <p
-                      className={`col-span-9 col-start-4 text-ink/60 leading-relaxed ${
-                        hasMockup ? "md:col-span-4 md:col-start-6" : "md:col-span-5 md:col-start-6"
-                      }`}
-                    >
-                      {s.text}
-                    </p>
-                    {hasMockup && (
-                      <div className="col-span-12 md:col-span-3 md:col-start-10 mt-6 md:mt-0 flex justify-center md:justify-end">
-                        {s.n === "01" ? <BrowserBuildMockup /> : <PhoneTapMockup />}
-                      </div>
-                    )}
-                    {!hasMockup && (
-                      <span className="hidden md:flex md:col-span-2 justify-end">
-                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 transition-[background-color,transform] duration-500 group-hover:bg-baby group-hover:rotate-45">
-                          <ArrowUpRight className="h-5 w-5" />
-                        </span>
-                      </span>
-                    )}
-                  </div>
-                </Reveal>
-              );
-            })}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
           </div>
 
           <Reveal className="mt-16 md:mt-20">
