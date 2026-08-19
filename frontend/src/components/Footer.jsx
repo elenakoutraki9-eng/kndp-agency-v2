@@ -57,7 +57,7 @@ export default function Footer() {
           <div className="md:col-span-2 md:col-start-11">
             <p className="text-xs uppercase tracking-[0.25em] font-semibold text-white/50 mb-6">Στούντιο</p>
             <p className="text-white/70 text-sm leading-relaxed">
-              Ιστότοποι, εφαρμογές, έξυπνα εργαλεία και αυτοματισμοί — φτιαγμένα για επιχειρήσεις κάθε μεγέθους.
+              Websites, apps, έξυπνα εργαλεία και αυτοματισμοί — φτιαγμένα για επιχειρήσεις κάθε μεγέθους.
             </p>
           </div>
         </div>

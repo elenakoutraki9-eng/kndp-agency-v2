@@ -14,10 +14,10 @@ import {
 } from "lucide-react";
 
 const SERVICES = [
-  { icon: Globe, title: "Ιστοσελίδες", desc: "Ένας ιστότοπος που φέρνει πελάτες." },
-  { icon: LayoutDashboard, title: "Εργαλεία Web", desc: "Δες τα νούμερά σου σε ένα μέρος." },
-  { icon: Smartphone, title: "Εφαρμογές", desc: "Οι πελάτες σου, πάντα ένα tap μακριά." },
-  { icon: AppWindow, title: "Εφαρμογές Web", desc: "Κρατήσεις και πληρωμές, αυτόματα." },
+  { icon: Globe, title: "Websites", desc: "Ένα website που φέρνει πελάτες." },
+  { icon: LayoutDashboard, title: "Web Tools", desc: "Δες τα νούμερά σου σε ένα μέρος." },
+  { icon: Smartphone, title: "Mobile Apps", desc: "Οι πελάτες σου, πάντα ένα tap μακριά." },
+  { icon: AppWindow, title: "Web Apps", desc: "Κρατήσεις και πληρωμές, αυτόματα." },
   { icon: CalendarClock, title: "Προγράμματα", desc: "Απόθεμα και πρόγραμμα χωρίς λάθη." },
   { icon: Wrench, title: "Έξυπνα Εργαλεία", desc: "Φτιαγμένο για τον τρόπο που δουλεύεις." },
   { icon: Zap, title: "Αυτοματισμοί", desc: "Τα συστήματά σου μιλάνε μεταξύ τους." },

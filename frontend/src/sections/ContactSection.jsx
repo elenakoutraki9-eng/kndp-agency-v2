@@ -7,10 +7,10 @@ import { WordMask, Reveal, Kicker, Magnetic } from "@/components/Reveal";
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const serviceOptions = [
-  { value: "Website", label: "Ιστότοπος" },
-  { value: "Web Tool", label: "Εργαλείο Web" },
-  { value: "App", label: "Εφαρμογή" },
-  { value: "Web App", label: "Εφαρμογή Web" },
+  { value: "Website", label: "Website" },
+  { value: "Web Tool", label: "Web Tool" },
+  { value: "App", label: "Mobile App" },
+  { value: "Web App", label: "Web App" },
   { value: "Program", label: "Πρόγραμμα" },
   { value: "Custom Tool", label: "Έξυπνο Εργαλείο" },
   { value: "Automation", label: "Αυτοματισμός" },

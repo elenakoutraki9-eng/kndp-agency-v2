@@ -2,12 +2,12 @@ import Marquee from "react-fast-marquee";
 import { Asterisk } from "lucide-react";
 
 const items = [
-  "Ιστότοποι",
-  "Εφαρμογές Web",
-  "Εφαρμογές Κινητού",
+  "Websites",
+  "Web Apps",
+  "Mobile Apps",
   "Έξυπνα Εργαλεία",
   "Αυτοματισμοί",
-  "Εργαλεία Web",
+  "Web Tools",
   "Προγράμματα",
   "Ψηφιακές Λύσεις",
 ];

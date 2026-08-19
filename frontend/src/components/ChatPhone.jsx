@@ -22,7 +22,7 @@ const BUSINESSES = [
     icon: UtensilsCrossed,
     results: [
       { label: "Online Μενού & Παραγγελίες", icon: UtensilsCrossed },
-      { label: "Σύστημα Κρατήσεων", icon: CalendarCheck },
+      { label: "Booking System", icon: CalendarCheck },
       { label: "Πρόγραμμα Επιβράβευσης", icon: Gift },
       { label: "Εργαλείο Προγραμματισμού Προσωπικού", icon: Users },
     ],
@@ -51,7 +51,7 @@ const BUSINESSES = [
     name: "Κατάστημα Λιανικής",
     icon: ShoppingBag,
     results: [
-      { label: "Ηλεκτρονικό Κατάστημα", icon: ShoppingBag },
+      { label: "Online Store", icon: ShoppingBag },
       { label: "Εργαλείο Διαχείρισης Αποθήκης", icon: Boxes },
       { label: "Πρόγραμμα Επιβράβευσης", icon: Gift },
       { label: "Ενσωμάτωση Ταμειακού Συστήματος (POS)", icon: CreditCard },

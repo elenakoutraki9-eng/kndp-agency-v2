@@ -6,15 +6,15 @@ import ProjectCarousel from "@/components/ProjectCarousel";
 
 const projects = [
   {
-    title: "Σύστημα Κρατήσεων Εστιατορίου",
+    title: "Booking System για Εστιατόριο",
     desc: "Online κρατήσεις, διαχείριση τραπεζιών και αυτόματες υπενθυμίσεις για ένα πολυσύχναστο bistro.",
-    tag: "Εφαρμογή Web",
+    tag: "Web App",
     img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    title: "Εφαρμογή Ηλεκτρονικού Εμπορίου",
-    desc: "Ένα γρήγορο ηλεκτρονικό κατάστημα με καλάθι, ολοκλήρωση παραγγελίας και συγχρονισμό αποθέματος για μια αναπτυσσόμενη επιχείρηση λιανικής.",
-    tag: "Ηλ. Εμπόριο",
+    title: "E-commerce App",
+    desc: "Ένα γρήγορο online store με καλάθι, ολοκλήρωση παραγγελίας και συγχρονισμό αποθέματος για μια αναπτυσσόμενη επιχείρηση λιανικής.",
+    tag: "E-commerce",
     img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop",
   },
   {
@@ -24,9 +24,9 @@ const projects = [
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    title: "Εφαρμογή Κινητού για Τοπικό Γυμναστήριο",
+    title: "Mobile App για Τοπικό Γυμναστήριο",
     desc: "Κρατήσεις μαθημάτων, συνδρομές και παρακολούθηση προπόνησης στην τσέπη των μελών.",
-    tag: "Εφαρμογή Κινητού",
+    tag: "Mobile App",
     img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop",
   },
   {
@@ -38,7 +38,7 @@ const projects = [
   {
     title: "Πλατφόρμα Αγγελιών Ακινήτων",
     desc: "Αγγελίες με δυνατότητα αναζήτησης, ενσωματωμένες εικονικές περιηγήσεις και εργαλεία για μεσίτες, για ένα τοπικό γραφείο.",
-    tag: "Πλατφόρμα Web",
+    tag: "Web Platform",
     img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200&auto=format&fit=crop",
   },
 ];
